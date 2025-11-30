@@ -1,0 +1,886 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+
+
+
+@font-face {
+  font-family: 'CMU Serif';
+  src: url('./fonts/computer-modern/cmunrm.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'CMU Classical Serif';
+  src: url('./fonts/computer-modern/cmunci.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+
+@font-face {
+  font-family: 'CMU Typewriter Text Variable Width';
+  src: url('./fonts/computer-modern/cmunvi.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'CMU Typewriter Text Variable Width';
+  src: url('./fonts/computer-modern/cmunvt.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*,"Noto Sans SC" */
+body {
+    margin: 0 auto;
+    max-width: 760px;
+    padding: 1.5rem 1rem;
+    background-color: #F8F6F0; 
+    color: #333;
+    font-family: "Open Sans","Noto Serif SC" ,"Noto Sans SC", "Lora", "Google Sans Code";
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans',"Noto Sans SC", "Noto Sans", sans-serif;  /* 标题使用同一无衬线字体 */
+  font-weight: 600;               /* 半粗体，突出标题 */
+  color: #111;                    /* 标题颜色比正文略深 */
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  line-height: 1.4;
+}
+h1 { font-size: 1.8em; border-bottom: 1px solid #eee; padding-bottom: 0.5em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.25em; }
+h4 { font-size: 1.1em; }
+h5 { font-size: 1em; }
+h6 { font-size: 0.9em; }
+
+
+
+
+#preamble {
+    width: 75%;
+    max-width: 980px;
+    text-align: left;
+    margin: auto;
+    margin-left: 0px; /* 根据新的宽度调整左边距 */
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eaeaea;
+    margin: 2.5rem 0;
+}
+
+.button {
+    border: none;
+    color: black;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#content, .content {
+    width: 96%;
+    max-width: 980px;
+    margin: auto;
+    /* 移除 padding-left */
+}
+
+/* 单独为需要左移的页面加 margin */
+body:not(.homepage) #content,
+body:not(.homepage) .content {
+    margin-left: 60px; /* 只在非主页加左偏移（比如文章页配合 ToC） */
+}
+
+
+a:link, a:visited {
+    color: #1781B5; /* #4273b8 */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1781B5;
+}
+
+
+
+
+
+
+#table-of-contents ul:hover {
+    opacity: 1;
+    color: #1781B5;
+}
+
+#table-of-contents ul:hover a {
+    opacity: 1;
+    color: #1781B5;
+}
+
+#table-of-contents ul a:hover {
+    opacity: 1;
+    color: #2b3a54;
+    text-decoration: none;
+}
+
+
+
+
+/* 缩小 h2 标题的字体大小 */
+h2 {
+  font-size: 1.3em; /* 或者设置为 18px */
+}
+
+
+#table-of-contents h2 {
+    display: none;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: right;
+    font-size: 1rem;
+    color: #666;
+    font-weight: normal;
+    margin-top: -1rem;
+}
+
+.figure {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 0.6;
+}
+
+figcaption {
+    margin-top: 0.1em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+
+code {
+    font-size: 0.3em;
+    color: #d73a49;
+    background: #f5f5f5;
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+}
+
+pre {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.org-src-container pre {
+    background: #f0f0f0;
+    border-left: 3px solid  #4273b8;
+    font-family: 'Google Sans Code';
+    font-size: 0.8em;
+    border-radius: 3px;
+    padding: 0.4em 0.5em;
+}
+
+
+
+
+
+blockquote {
+    margin: 1.3em 0.8em;
+    padding-left: 1em;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+    border-left: 3px solid #ccc;
+    color: #444;
+   /* font-style: italic;*/
+    line-height: 1.4;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 1em;
+    font-style: normal;
+    background: #F3F0E6;
+}
+
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #888;
+    margin: 1.5rem 0;
+    clear: both;
+}
+
+.created, .updated {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    #table-of-contents {
+        margin-left: 0;
+        position: static;
+        width: auto;
+        max-height: none;
+        padding-right: 0;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+/* 针对 MathJax 3（现代版本，推荐使用） */
+.mathjax-container,
+.MathJax,
+.MathJax .math {
+    font-size: 0.92em !important;   /* 相对缩小约 8%（相当于“小一号”） */
+    line-height: 1 !important;
+}
+
+/* 可选：进一步控制行内公式 */
+.MathJax_inline {
+    font-size: 0.96em !important;
+}
+
+.csl-right-inline{
+     font-family: 'CMU Serif', "Noto Serif SC";
+}
+.csl-right-inline i{
+    font-family:'CMU Classical Serif', "Noto Serif SC";
+   
+}
+
+
+.csl-left-margin{
+     font-family:'CMU Serif', "Noto Serif SC";
+}
+
+#outline-container-references h2 .section-number-2 {
+  display: none;
+}
+
+
+/* 单独控制 footnotes 的 h2 */
+#footnotes .footnotes {
+  font-size: 0.9rem;        /* 变小一点（默认 h2 是 1.5em ~ 1.8em）*/
+  font-weight: 500;
+  color: #555;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  text-align: left;         /* 可选：左对齐 */
+  padding-left: 0;
+  
+}
+
+/* 确保不会被 Org 的自动编号影响 */
+#footnotes h2:before {
+    content: none !important; /* 彻底移除任何伪元素编号 */
+}
+
+#footnotes h2 {
+  counter-increment: none !important; /* 防止被计数器影响 */
+}
+
+
+
+
+.postamble-meta {
+  max-width: 980px;          /* 与 body 的 max-width 一致 */
+  margin: 3rem auto 1rem;     /* 上下间距，auto 实现水平居中 */
+  padding: 0 1.5rem;          /* 与 body 的 padding 一致，保证左右对齐 */
+  text-align: right;          /* 所有内容靠右 */
+  color: #777;
+  font-size: 1.1em;
+  line-height: 1;
+  font-family: 'CMU Typewriter Text Variable Width';
+    font-style: italic;  
+  font-weight: 600;
+}
+
+.postamble-meta p {
+  margin: 0.5em 0;
+}
+
+/* 第二部分：评论区 → 使用正文字体（通常是 sans-serif） */
+.postamble-comments {
+  font-family: "Open Sans","Noto Sans SC", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 0 1.5rem 2rem;
+  color: #333;
+}
+
+/* 可选：确保 giscus iframe 不受外部字体影响 */
+#postamble .postamble-comments iframe {
+  font-family: inherit !important;
+  font-size: 1em !important;
+}
+
+/* 仅在主页（body.homepage）中，修改时间戳样式 */
+body.homepage span.timestamp {
+  color: #555555;           /* 灰色，可自定义 */
+  font-size: 0.9em;         /* 稍小一点 */
+  opacity: 0.85;            /* 略微透明，更柔和 */
+  font-weight: normal;      /* 避免加粗 */
+}
+
+
+body.homepage {
+  max-width: 960px !important;           /* 主页外框允许更宽 */
+}
+
+/* 主页的内容容器再跟着放大（用 clamp 做自适应更优雅） */
+body.homepage #content,
+body.homepage .content {
+  width: 96% !important;
+  max-width: clamp(960px, 90vw, 1200px) !important;  /* 960–1200 自适应 */
+  margin: 0 auto;
+  padding-top: 1vh;
+}
+
+
+
+body.homepage h1.title {
+
+  display: none;
+}
+
+
+body.homepage h1.title-show {
+  font-family: 'CMU Typewriter Text Variable Width';
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 6rem auto 3rem;     /* 用 auto 实现水平居中，更明确 */
+  display: block;              /* 确保是块级元素 */
+  width: 100%;                 /* 占满宽度，便于居中 */
+  border-bottom: 0px solid #eee;
+}
+
+body.homepage h1.title-show .author-name {
+  font-style: italic;
+}
+
+
+body.homepage blockquote {
+  font-family: 'Baskervville';
+  font-style: italic;
+  color: #444;
+  font-size: 1.1em;
+  line-height: 1.4;
+  padding-right: 1em;
+}
+
+
+
+/* ========== 标签显示：右对齐 + 灰色文字 ========== */
+body.homepage ul .tags {
+  float: right;
+}
+@media screen and (min-width: 780px) {
+  body.homepage .tags::after {
+    content: attr(data-tags);
+    color: gray;
+    font-size: 0.9em;
+  }
+}
+
+
+
+
+/* ========== 过滤器样式：保持原样 ========== */
+body.homepage .filter {
+    font-family: 'CMU Typewriter Text Variable Width';
+  text-align: center;
+  font-size: 0.8em;
+  line-height: 0.96;
+  padding-top: 4vh;
+}
+
+body.homepage .filter label {
+  position: relative;
+}
+
+body.homepage .filter .category {
+  display: inline-flex;
+}
+
+body.homepage .filter .category input {
+  display: none;
+}
+
+body.homepage .filter .category span:before {
+  position: absolute;
+  top: 0em;
+  right: 0em;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transform: scale(0.5);
+  display: none;
+}
+
+body.homepage .filter .category input:checked + span:before {
+  display: block;
+}
+
+body.homepage .filter .category input:checked + span {
+  color: #777;
+  border-color: #777;
+}
+
+body.homepage .filter .category span {
+  border: 1.4px lightgray solid;
+  color: lightgray;
+  border-radius: 0.4em;
+  padding: 0.2em 0.6em;
+  user-select: none;
+  cursor: pointer;
+}
+
+body.homepage .filter ~ ul {
+  padding-inline-start: 0.3em;
+}
+
+/* ========== 核心：过滤逻辑 ========== */
+
+/* 默认：所有文章都隐藏 */
+body.homepage .content li {
+  display: none;
+}
+
+/* All 被选中 → 显示所有文章 */
+body.homepage .content:has([value="all"]:checked) li {
+  display: list-item;
+}
+
+/* 某个 tag 被选中 → 显示 data-tags 包含该 tag 的文章 */
+/* 例如：value="tag1" → 匹配 data-tags~="#tag1" */
+body.homepage .content:has([value="Reading"]:checked) li:has([data-tags~="#Reading"]) {
+  display: list-item;
+}
+body.homepage .content:has([value="Learning"]:checked) li:has([data-tags~="#Learning"]) {
+  display: list-item;
+}
+body.homepage .content:has([value="DirtyHands"]:checked) li:has([data-tags~="#DirtyHands"]) {
+  display: list-item;
+}
+body.homepage .content:has([value="Organizing"]:checked) li:has([data-tags~="#Organizing"]) {
+  display: list-item;
+}
+
+body.homepage .content:has([value="WorkSmart"]:checked) li:has([data-tags~="#WorkSmart"]) {
+  display: list-item;
+}
+
+/* 脚注部分的美观改善 */
+/* 脚注部分美化样式 */
+#footnotes {
+    margin: 3rem 0 2rem 0;
+    padding: 1.5rem;
+}
+
+#footnotes h2.footnotes {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+#text-footnotes {
+    margin: 0.5rem;
+    padding: 0rem;
+    font-size: 0.92em;
+}
+
+.footdef {
+    margin: 0.8rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    padding-left:  3rem;
+    padding-right: 3rem;
+    border: 1.5px solid #e0e0e0;
+}
+
+.footdef:last-child {
+    margin-bottom: 0;
+}
+
+.footdef .footnum {
+    font-weight: 600;
+    color: #4273b8;
+    margin-right: 0.5rem;
+}
+
+.footdef .footpara {
+    display: inline;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footdef .footpara p.footpara {
+    margin: 0;
+    display: inline;
+}
+
+/* 脚注链接样式 */
+.footdef a {
+    color: #1781b5;
+    text-decoration: none;
+}
+
+.footdef a:hover {
+    text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #footnotes {
+        margin: 2rem 0;
+        padding: 1rem;
+    }
+    
+    .footdef {
+        padding: 0.6rem;
+    }
+}
+
+
+/* ===== ToC：稳定字体 + 不在 hover 时换字重/透明度 ===== */
+#table-of-contents {
+  position: fixed;
+  top: 26rem;
+  align-self: flex-start;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: "Open Sans","Noto Sans SC", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;                /* 固定字重，hover 不变 */
+  width: 180px;
+  padding-right: 1.5rem;
+  margin-left: -240px;
+  z-index: 100;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#table-of-contents h2 { display: none; }
+
+#table-of-contents ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  /* 不再对父级做 opacity 过渡，避免 AA 切换 */
+}
+
+#table-of-contents li { margin: 0.25em 0; }
+
+#table-of-contents a {
+  color: #1781B5;
+  text-decoration: none;
+  opacity: 0.5;                   /* 轻微弱化放在链接本身 */
+  transition: color .18s ease, opacity .18s ease;
+  font-weight: inherit;            /* 继承 400，避免 hover 改变 */
+  letter-spacing: 0;               /* 锁定字距（可按需删去） */
+}
+
+#table-of-contents a:hover {
+  color: #2b3a54;
+  opacity: 1;
+}
+
+/* 移除会触发度量变化的规则 */
+#table-of-contents ul:hover,
+#table-of-contents ul:hover a {
+  /* 不再设置 font-weight / color / opacity */
+}
+
+/* 缩进层级保持清晰 */
+#table-of-contents ul ul     { padding-left: 0.6em; }
+#table-of-contents ul ul ul  { padding-left: 0.6em; }
+#table-of-contents ul ul ul ul { padding-left: 0.6em; }
+
+
+
+
+
+p {
+  margin: 1em 0;                  /* 段落上下间距，增加呼吸感 */
+}
+strong, b {
+  font-weight: 600;               /* 加粗强调 */
+}
+em, i {
+  font-style: italic;             /* 斜体强调 */
+}
+
+
+
+
+
+
+.footer, .post-footer, .footnotes {
+  font-size: 0.9em;
+  color: #555;
+  border-top: 1px solid #eee;
+  margin-top: 3em;
+  padding-top: 1em;
+}
+.footnotes ol {
+  padding-left: 1.2em;
+}
+.footnotes li {
+  margin: 0.5em 0;
+}
+.footnotes li a {
+  text-decoration: none;
+}
+sup { 
+  font-size: 0.8em;
+}
+sup a {
+  text-decoration: none;
+}
+
+
+
+
+
+/* ========== 主页文章列表的小圆点改为浅灰 ========== */
+body.homepage ul.org-ul > li::marker {
+  color: lightgray;
+}
+
+
+/* ========== 年度更新热力图（homepage 专用，全量定义） ========== */
+
+body.homepage .update-heatmap {
+  margin: 3rem auto 2.5rem;   /* 上下留白更足一点 */
+  padding: 1rem 1.2rem;       /* 内边距稍大，让区域更饱满 */
+  border-radius: 1rem;
+  border: none;               /* 不要外边框 */
+  background: transparent;    /* 与整体背景融合 */
+  font-family: 'CMU Typewriter Text Variable Width',
+               "Open Sans", "Noto Sans SC",
+               "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+/* 头部：只保留右侧年份 + 箭头 */
+body.homepage .update-heatmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+/* 确保旧的标题元素不显示 */
+body.homepage .update-heatmap-title {
+  display: none;
+}
+
+body.homepage .update-heatmap-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #555555;
+}
+
+/* 年份：Open Sans，小一点、胶囊背景 */
+body.homepage .heatmap-year-label {
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: none;
+  font-family: "Open Sans", "Noto Sans", "Noto Sans SC",
+               system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* 左右箭头按钮：小巧，无边框，轻微悬浮效果 */
+body.homepage .heatmap-year-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: none;
+  color: #b8b8b8;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition:
+    background 0.16s ease,
+    color 0.16s ease,
+    box-shadow 0.16s ease,
+    transform 0.12s ease;
+}
+
+body.homepage .heatmap-year-btn:hover:not(:disabled) {
+  background: rgba(243, 244, 246, 0.9);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transform: translateY(-1px);
+}
+
+body.homepage .heatmap-year-btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+body.homepage .heatmap-year-btn:disabled {
+  cursor: default;
+  opacity: 0.35;
+  box-shadow: none;
+}
+
+/* 主体：flex 居中，整体更“饱满” */
+body.homepage .update-heatmap-body {
+  margin-top: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* 滚动条简洁一些 */
+body.homepage .update-heatmap-body::-webkit-scrollbar {
+  height: 4px;
+}
+
+body.homepage .update-heatmap-body::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 999px;
+}
+
+/* SVG 宽度尽量撑满内容区域，让网格不显得太小 */
+body.homepage .heatmap-svg {
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  display: block;
+}
+
+/* 方块基础样式：默认“无更新”的灰格子 */
+body.homepage .heatmap-day {
+  fill: #f3f4f6;          /* 无更新：浅灰底 */
+  /* stroke: #e5e7eb;        灰色边线 */
+  stroke-width: 0.5;
+  shape-rendering: crispEdges;
+  transition: fill 0.12s ease, stroke 0.12s ease;
+}
+
+/* 有更新：不再区分次数，统一用绿色 */
+body.homepage .heatmap-day.level-1,
+body.homepage .heatmap-day.level-2,
+body.homepage .heatmap-day.level-3,
+body.homepage .heatmap-day.level-4 {
+  fill: #93c5fd;          /* 柔和浅绿 */
+}
+
+/* hover 时稍微加深描边，依然不区分次数 */
+body.homepage .heatmap-day:hover {
+  stroke: #9ca3af;
+  stroke-width: 0.8;
+}
+
+/* 当天高亮描边 */
+body.homepage .heatmap-day.is-today {
+  stroke: #93c5fd;
+  stroke-width: 1.1;
+}
+
+/* 提示气泡：悬停时显示日期 */
+body.homepage .heatmap-tooltip {
+  position: fixed;
+  z-index: 60;
+  pointer-events: none;
+  padding: 0.32rem 0.6rem;
+  font-size: 0.7rem;
+  background: rgba(20, 20, 25, 0.92);
+  color: #f9fafb;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.45);
+  transform: translate3d(0, 0, 0);
+  white-space: nowrap;
+}
+
+/* 小屏幕适配：整体略收紧 */
+@media (max-width: 780px) {
+  body.homepage .update-heatmap {
+    margin: 2.5rem auto 1.8rem;
+    padding: 0.8rem 0.9rem;
+  }
+  body.homepage .update-heatmap-controls {
+    font-size: 0.72rem;
+  }
+  body.homepage .heatmap-year-label {
+    font-size: 0.78rem;
+  }
+}

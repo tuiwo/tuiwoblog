@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-11-30 Sun 13:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>梯度</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel='stylesheet' href='style.css'/>
+                 <script src='comments.js'></script>
+<style>
+.content:has([value="all"]:checked) li{display: list-item;}
+
+.content:has([value="DirtyHands"]:checked)
+ li:has([data-tags~="#DirtyHands"]){display: list-item;}
+.content:has([value="Learning"]:checked)
+ li:has([data-tags~="#Learning"]){display: list-item;}
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-tex',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<style>.home-link { margin: 1.5rem 0; font-size: 0.9em; color: #777; }
+.home-link a { color: #4273b8; text-decoration: none; }
+.home-link a:hover { text-decoration: none; text-shadow: 0 0 1px #000; }
+</style>
+<div class='home-link'><a href='index.html'>⌂</a></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">梯度</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5bb9ab8">1. 空间中的直线方程</a></li>
+<li><a href="#org7f5d3a1">2. 二维情况的梯度 <a href="#citeproc_bib_item_1">[1]</a></a></li>
+<li><a href="#references">3. References</a></li>
+</ul>
+</div>
+</div>
+<div style="margin: 1em auto;">
+<button>TEST</button>
+</div>
+<div id="outline-container-org5bb9ab8" class="outline-2">
+<h2 id="org5bb9ab8"><span class="section-number-2">1.</span> 空间中的直线方程</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+已知直线上一点\((x_0,y_0,z_0)\)，已知与直线共线的向量\( \boldsymbol{e} = (a,b,c) \)。空间中直线上的点\((x,y,z)\)满足参数方程
+</p>
+\begin{equation}
+\label{}
+(x-x_0,y-y_0,z-z_0)=t(a,b,c)
+\end{equation}
+<p>
+即
+</p>
+\begin{equation}
+\begin{cases}
+x = x_0 + ta\\
+y = y_0 +tb \\
+z = z_0 +tc
+\end{cases}
+\end{equation}
+<p>
+向量 \(\boldsymbol{e}\) 唯一的作用就是指示方向，它的模长是没有用的，要是能把它写成单位向量就更美观了，显然只要除以它的模长就能得到同向的单位向量 \(\boldsymbol{e}_0 = \frac{\boldsymbol{e}}{|\boldsymbol{e}|}\)，即
+</p>
+\begin{equation}
+\boldsymbol{e}_0 = (\frac{a}{ \sqrt{a^2+b^2+c^2}} ,\frac{b}{ \sqrt{a^2+b^2+c^2}},\frac{c}{ \sqrt{a^2+b^2+c^2}  })
+\end{equation}
+<p>
+此处可以有一张3D图片，注意到每个坐标就是原坐标/向量长度，其实就是向量与坐标轴夹角（设为 \(\alpha ,\beta,\gamma\)）的余弦值，即
+</p>
+\begin{equation}
+\boldsymbol{e}_0 = ( \cos \alpha ,\cos \beta, \cos \gamma )
+\end{equation}
+<p>
+这就是这个方向的单位向量 。既然是余弦值，还有一种自然的表示方式
+</p>
+\begin{equation}
+\cos \alpha  = \frac{ \boldsymbol{e} \cdot \boldsymbol{i}}{|\boldsymbol{e}|}
+\end{equation}
+<p>
+即
+</p>
+\begin{equation}
+\boldsymbol{e}_0 = ( \frac{ \boldsymbol{e} \cdot \boldsymbol{i}}{|\boldsymbol{e}|}, \frac{ \boldsymbol{e} \cdot \boldsymbol{j}}{|\boldsymbol{e}|}, \frac{ \boldsymbol{e} \cdot \boldsymbol{k}}{|\boldsymbol{e}|})
+\end{equation}
+<p>
+根据公式(4)(2)，直线上一点就可以表示为
+</p>
+\begin{equation}
+\label{}
+\begin{cases}
+x= x_0 + t \cos \alpha \\
+y = y_0 +t \cos \beta \\
+z = z_0 +t \cos \gamma
+\end{cases}
+\end{equation}
+<p>
+注意，\(t\)的含义是下一个点与已知点距离为方向向量的几倍，当取单位向量的时候，\(t\)其实就表示下一个点与当前点空间间距是多少，这一点隐含在(9)的定义里面。
+</p>
+</div>
+</div>
+<div id="outline-container-org7f5d3a1" class="outline-2">
+<h2 id="org7f5d3a1"><span class="section-number-2">2.</span> 二维情况的梯度 <a href="#citeproc_bib_item_1">[1]</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+函数 \(f(x,y)\) 沿着 \(x,y\) 方向的变化率就是函数在这两个方向上的偏导数 \(f_x,f_y\) ，但是函数不止会沿着这两个方向变化，我们想知道当沿着 <b>别的方向</b> 函数的变化率有多快，也就是说，从当前点 \((x_0,y_0)\)沿着任意一个方向走一小步，函数值变化量有多少，这个量我们定义为这个方向上的 <b>方向导数</b> 。
+首先要描述出来我们在关心的是哪个方向，我们可以找到这个方向上的一个单位向量 \(\boldsymbol{e}_0=(\cos \alpha ,\cos \beta)\).我们已知一个出发点 \((x_0,y_0)\).
+那么这个方向上下一个点 \((x,y)\) ,就可以表示为
+</p>
+\begin{equation}
+\begin{cases}
+x= x_0 + t \cos \alpha \\
+y = y_0 +t \cos \beta
+\end{cases}
+\end{equation}
+<p>
+那么方向导数就能定义为，下一个点 \((x,y)\) 和当前点 \((x_0,y_0)\) 在无限接近的情况下的变化率
+</p>
+\begin{equation}
+\frac{ \partial f }{ \partial \boldsymbol{e}_0 }\bigg|_{(x_0,y_0)} = \lim_{t \to 0} \frac{f(x,y)-f(x_0,y_0)}{t}= \frac{f(x_0+t \cos \alpha, y_0 + t \cos \beta )-f(x_0,y_0)}{t}
+\end{equation}
+<p>
+可以证明
+</p>
+\begin{equation}
+\frac{ \partial f }{ \partial \boldsymbol{e}_0  }\bigg|_{(x_0,y_0)}= f_x (x_0,y_0) \cos \alpha +f_y (x_0, y_0) \cos \beta
+\end{equation}
+<p>
+显然二维平面上能选的方向是无限多的，也就是有无穷多的方向导数。并且，沿着任意一个方向的变化率，即方向导数，可以用 \(x,y\) 方向上的偏导数表示出来。
+</p>
+
+<p>
+我们想知道在无数多的方向导数中，沿着哪一个方向，或者说取哪一个方向 \(\boldsymbol{e}_0\) 的时候，方向导数最小/最大。
+为此，我们观察(10)的形式，发现可以规定一个特殊的向量，从而把(10)写成向量的乘积形式，规定向量 \(\boldsymbol{g}\) 为
+</p>
+\begin{equation}
+\boldsymbol{g} = (f_x(x_0,y_0),f_y(x_0,y_0))
+\end{equation}
+<p>
+于是(10)写成：
+</p>
+\begin{equation}
+\frac{ \partial f }{ \partial \boldsymbol{e}_0 }\bigg|_{(x_0,y_0)}=\boldsymbol{g} \cdot \boldsymbol{e}_0 = |\boldsymbol{g}| \cos \left \langle \boldsymbol{g},\boldsymbol{e}_0 \right \rangle
+\end{equation}
+<p>
+显然当我们选定的 \(\boldsymbol{e}_0\) 方向和引入的特殊向量 \(\boldsymbol{g}\) 方向一致的时候，方向导数是最大的，且最大值就是 \(\boldsymbol{g}\) 的模长 \(|\boldsymbol{g}|\)，沿此方向函数增加最快；当选定的 \(\boldsymbol{e}_0\) 的方向与 \(\boldsymbol{g}\) 的方向垂直的时候，方向导数最小，且最小值就是模长的相反数 \(-|\boldsymbol{g}|\)，沿此方向函数减小最快。
+</p>
+
+<p>
+所以我们把这个特殊的向量叫作函数在 \((x_0,y_0)\) 处的梯度，记作
+</p>
+\begin{equation}
+\label{}
+\boldsymbol{grad} f |_{(x_0,y_0)}= (f_x(x_0,y_0),f_y(x_0,y_0))
+\end{equation}
+<p>
+需要强调梯度是一个向量，特别的，它的模长是此处方向导数的最值；它的方向就指向变化率最大的那个方向。
+</p>
+</div>
+</div>
+<div id="outline-container-references" class="outline-2">
+<h2 id="references"><span class="section-number-2">3.</span> References</h2>
+<div class="outline-text-2" id="text-references">
+<style>.csl-left-margin{float: left; padding-right: 0em;}
+ .csl-right-inline{margin: 0 0 0 1em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>
+    <div class="csl-left-margin">[1]</div><div class="csl-right-inline">李 忠, 周 建莹, <i>高等数学/上册</i>. 北京大学出版社, 2004.</div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id='postamble' class='status'>
+  <div class='postamble-meta'>
+  <p class="author">Author: tuiwo</p>
+  <p class="email">Email: fhywork@foxmail.com</p>
+  <p class="date">Date: 2025-11-30</p>
+  <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.11)</p>
+  </div>
+  <div class="postamble-comments">
+    <script src="https://giscus.app/client.js"
+            data-repo="tuiwo/blogdiscussion"
+            data-repo-id="R_kgDOP0EuWQ"
+            data-category="General"
+            data-category-id="DIC_kwDOP0EuWc4Cvtd5"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang="zh-CN"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+</div>
+</div>
+</body>
+</html>
