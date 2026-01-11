@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-11 Sun 14:24 -->
+<!-- 2026-01-11 Sun 00:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>tuiwo's Blog</title>
+<title>note3</title>
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -192,232 +192,45 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel='stylesheet' href='style.css'/>
-                 <script src='sidenotes.js' defer></script>
-                 <script src='comments.js'></script>
-<body class='homepage'>
+<link rel='stylesheet' href='../style.css'/>
+                 <script src='../sidenotes.js' defer></script>
+                 <script src='../comments.js'></script>
+<style>
+.content:has([value="all"]:checked) li{display: list-item;}
+
+.content:has([value="DirtyHands"]:checked)
+ li:has([data-tags~="#DirtyHands"]){display: list-item;}
+.content:has([value="Learning"]:checked)
+ li:has([data-tags~="#Learning"]){display: list-item;}
+</style>
 </head>
 <body>
-<div id="content" class="content">
-<h1 class="title">tuiwo's Blog</h1>
-<body class='homepage'>
+<div id="preamble" class="status">
 <style>
 .nav-link { margin: 1.5rem 0; font-size: 0.9em; color: #777; display:flex; gap:0.75rem; }
 .nav-link a { color: #4273b8; text-decoration: none; }
 .nav-link a:hover { text-decoration: none; text-shadow: 0 0 1px #000; }
-</style> <nav class='homepage-link' aria-label='Primary'>
-    <a href='./index.html' class='nav-link'><span class='icon' aria-hidden='true'>🏡</span>Home</a>
-    <a href='./notes/index.html' class='nav-link'><span class='icon' aria-hidden='true'>🥀</span>Garden</a>
-  </nav><h1 class='title-show'><span class='author-name'>tuiwo</span>'s Blog</h1>
-<div id='content' class='content'>
-<blockquote>
+</style>
+<div class='nav-link'>
+  <a href='../index.html'>🏡 Home</a>
+  <a href='index.html'>🥀 Garden</a>
+</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">note3</h1>
 <p>
-I have a divine or spiritual sign which Meletus has ridiculed in his deposition. It is a voice, and whenever it speaks it turns me away from something I am about to do, but it never encourages me to do anything.
+普肖尔河
+Here’s the thing
 </p>
-</blockquote>
-
-<section class="filter">
-<label class="category">
-<input type="radio" name="tag" value="all" checked/>
-<span>All</span>
-</label>
-<label class="category">
-<input type="radio" name="tag" value="Learning"/>
-<span>Learning</span>
-</label>
-<label class="category">
-<input type="radio" name="tag" value="File"/>
-<span>File</span>
-</label></section>
-<ul class="org-ul">
-<li><span class="timestamp">[2026-01-11]</span>   <a href="test_footnote.html">Temp</a> <span class="tags" data-tags="#File"></span></li>
-<li><span class="timestamp">[2025-12-12]</span>   <a href="stream2.html">stream</a> <span class="tags" data-tags="#File"></span></li>
-<li><span class="timestamp">[2025-11-30]</span>   <a href="post1.html">梯度</a> <span class="tags" data-tags="#Learning"></span></li>
-</ul>
-
-<ul class="stream-update-dates" style="display:none;">
-<li><span class="timestamp">[2025-12-12]</span></li>
-</ul>
-<section class="update-heatmap" id="update-heatmap">
-  <div class="update-heatmap-header">
-    <div class="update-heatmap-controls">
-      <button type="button" class="heatmap-year-btn" data-direction="prev" aria-label="上一年">&#x25C0;</button>
-      <span class="heatmap-year-label"></span>
-      <button type="button" class="heatmap-year-btn" data-direction="next" aria-label="下一年">&#x25B6;</button>
-    </div>
+</div>
+<div id="postamble" class="status">
+<div id='postamble' class='status'>
+  <div class='postamble-meta'>
+  <p class="author">Author: tuiwo</p>
+  <p class="email">Email: fhywork@foxmail.com</p>
+  <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.11)</p>
   </div>
-  <div class="update-heatmap-body"></div>
-</section>
-<script>
-(function() {
-  function buildHeatmap() {
-    if (!document.body || !document.body.classList.contains('homepage')) { return; }
-
-    var MIN_YEAR = 2025;
-    var now = new Date();
-    var maxYear = now.getFullYear();
-    if (maxYear < MIN_YEAR) { maxYear = MIN_YEAR; }
-
-    var container = document.getElementById('update-heatmap');
-    if (!container) { return; }
-
-    var bodyEl  = container.querySelector('.update-heatmap-body');
-    var labelEl = container.querySelector('.heatmap-year-label');
-    var prevBtn = container.querySelector('.heatmap-year-btn[data-direction="prev"]');
-    var nextBtn = container.querySelector('.heatmap-year-btn[data-direction="next"]');
-
-    var timestamps = document.querySelectorAll('body.homepage .content li .timestamp');
-    var activity = {};
-
-    function pad(n) { return (n < 10 ? '0' + n : '' + n); }
-
-    for (var i = 0; i < timestamps.length; i++) {
-      var text = timestamps[i].textContent || '';
-      var m = text.match(/\[(\d{4})-(\d{2})-(\d{2})\]/);
-      if (!m) { continue; }
-      var year = parseInt(m[1], 10);
-      if (year < MIN_YEAR) { continue; }
-      var key = year + '-' + m[2] + '-' + m[3];
-      if (!activity[year]) { activity[year] = {}; }
-      activity[year][key] = (activity[year][key] || 0) + 1;
-      if (year > maxYear) { maxYear = year; }
-    }
-
-    var currentYear = maxYear;
-
-    var tooltip = document.createElement('div');
-    tooltip.className = 'heatmap-tooltip';
-    tooltip.style.display = 'none';
-    document.body.appendChild(tooltip);
-
-    function clampYear(y) {
-      if (y < MIN_YEAR) { return MIN_YEAR; }
-      if (y > maxYear) { return maxYear; }
-      return y;
-    }
-
-    function setButtons() {
-      if (prevBtn) { prevBtn.disabled = (currentYear <= MIN_YEAR); }
-      if (nextBtn) { nextBtn.disabled = (currentYear >= maxYear); }
-    }
-
-    function clearBody() {
-      if (!bodyEl) { return; }
-      while (bodyEl.firstChild) { bodyEl.removeChild(bodyEl.firstChild); }
-    }
-
-    function renderYear(year) {
-      year = clampYear(year);
-      currentYear = year;
-      setButtons();
-
-      if (labelEl) { labelEl.textContent = year; }
-      if (!bodyEl) { return; }
-
-      clearBody();
-
-      var svgNS = 'http://www.w3.org/2000/svg';
-      var jan1  = new Date(year, 0, 1);
-      var leap  = (new Date(year, 1, 29).getMonth() === 1);
-      var daysInYear = leap ? 366 : 365;
-      var weeks = Math.ceil((daysInYear + jan1.getDay()) / 7);
-      var cell  = 13;  /* 方块稍微变大 */
-      var gap   = 3;
-      var width  = weeks * (cell + gap);
-      var height = 7 * (cell + gap);
-
-      var svg = document.createElementNS(svgNS, 'svg');
-      svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
-      svg.setAttribute('class', 'heatmap-svg');
-
-      var yearData = activity[year] || {};
-      var today = new Date();
-      var todayKey = null;
-      if (today.getFullYear() === year) {
-        todayKey = year + '-' + pad(today.getMonth() + 1) + '-' + pad(today.getDate());
-      }
-
-      var d = new Date(year, 0, 1);
-      var msDay = 24 * 60 * 60 * 1000;
-
-      while (d.getFullYear() === year) {
-        var dayOfWeek = d.getDay();
-        var dayIndex  = Math.floor((d - jan1) / msDay);
-        var weekIndex = Math.floor((dayIndex + jan1.getDay()) / 7);
-
-        var mm = pad(d.getMonth() + 1);
-        var dd = pad(d.getDate());
-        var key = year + '-' + mm + '-' + dd;
-        var count = yearData[key] || 0;
-        var level = 0;
-        if (count > 0) {
-          level = (count >= 4) ? 4 : count;
-        }
-
-        var rect = document.createElementNS(svgNS, 'rect');
-        rect.setAttribute('x', weekIndex * (cell + gap));
-        rect.setAttribute('y', dayOfWeek * (cell + gap));
-        rect.setAttribute('width',  cell);
-        rect.setAttribute('height', cell);
-        rect.setAttribute('rx', 2);
-        rect.setAttribute('ry', 2);
-        rect.setAttribute('class', 'heatmap-day level-' + level);
-        rect.setAttribute('data-date',  key);
-        rect.setAttribute('data-count', count);
-
-        if (todayKey && key === todayKey) {
-          rect.classList.add('is-today');
-        }
-
-        rect.addEventListener('mouseenter', function(evt) {
-          var c = parseInt(this.getAttribute('data-count') || '0', 10);
-          if (!c) { return; }
-          var dateKey = this.getAttribute('data-date');
-          tooltip.textContent = dateKey;
-          tooltip.style.display = 'block';
-        });
-
-        rect.addEventListener('mousemove', function(evt) {
-          if (tooltip.style.display === 'none') { return; }
-          tooltip.style.left = (evt.clientX + 12) + 'px';
-          tooltip.style.top  = (evt.clientY + 12) + 'px';
-        });
-
-        rect.addEventListener('mouseleave', function() {
-          tooltip.style.display = 'none';
-        });
-
-        svg.appendChild(rect);
-        d = new Date(d.getTime() + msDay);
-      }
-
-      bodyEl.appendChild(svg);
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function() {
-        if (currentYear <= MIN_YEAR) { return; }
-        renderYear(currentYear - 1);
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function() {
-        if (currentYear >= maxYear) { return; }
-        renderYear(currentYear + 1);
-      });
-    }
-
-    renderYear(currentYear);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildHeatmap);
-  } else {
-    buildHeatmap();
-  }
-})();
-</script>
+</div>
 </div>
 </body>
 </html>

@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-10 Sat 13:19 -->
+<!-- 2026-01-11 Sun 14:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>梯度</title>
+<title>Temp</title>
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -198,10 +198,10 @@
 <style>
 .content:has([value="all"]:checked) li{display: list-item;}
 
-.content:has([value="DirtyHands"]:checked)
- li:has([data-tags~="#DirtyHands"]){display: list-item;}
 .content:has([value="Learning"]:checked)
  li:has([data-tags~="#Learning"]){display: list-item;}
+.content:has([value="File"]:checked)
+ li:has([data-tags~="#File"]){display: list-item;}
 </style>
 <script>
   window.MathJax = {
@@ -245,154 +245,142 @@
 <div class='home-link'><a href='index.html'>⌂</a></div>
 </div>
 <div id="content" class="content">
-<h1 class="title">梯度</h1>
+<h1 class="title">Temp</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5bb9ab8">1. 空间中的直线方程</a></li>
-<li><a href="#org7f5d3a1">2. 二维情况的梯度 <a href="#citeproc_bib_item_1">[1]</a></a></li>
-<li><a href="#references">3. References</a></li>
+<li><a href="#org94c4e54">1. 测试内容1</a>
+<ul>
+<li><a href="#org59d8de1">1.1. 次级标题</a>
+<ul>
+<li><a href="#org19977c6">1.1.1. 下级标题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb94db7b">2. 公式</a></li>
+<li><a href="#orgac4bbbe">3. 代码块</a></li>
+<li><a href="#orgbd2c9b3">4. Tikz图片</a></li>
+<li><a href="#references">5. References</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5bb9ab8" class="outline-2">
-<h2 id="org5bb9ab8"><span class="section-number-2">1.</span> 空间中的直线方程</h2>
+<div style="margin: 1em auto;">
+  <button>KEYWORD1</button>
+   <button>KEYWORD2</button>
+</div>
+
+
+
+<blockquote>
+<p>
+<a href="http://orgmode.org/">Org mode</a> is for keeping <i>notes<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>, maintaining TODO lists, planning projects,
+and authoring documents with a fast and effective</i> system<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>.
+</p>
+</blockquote>
+<div id="outline-container-org94c4e54" class="outline-2">
+<h2 id="org94c4e54"><span class="section-number-2">1.</span> 测试内容1</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-已知直线上一点\((x_0,y_0,z_0)\)，已知与直线共线的向量\( \boldsymbol{e} = (a,b,c) \)。空间中直线上的点\((x,y,z)\)满足参数方程
-</p>
-\begin{equation}
-\label{}
-(x-x_0,y-y_0,z-z_0)=t(a,b,c)
-\end{equation}
-<p>
-即
-</p>
-\begin{equation}
-\begin{cases}
-x = x_0 + ta\\
-y = y_0 +tb \\
-z = z_0 +tc
-\end{cases}
-\end{equation}
-<p>
-向量 \(\boldsymbol{e}\) 唯一的作用就是指示方向，它的模长是没有用的，要是能把它写成单位向量就更美观了，显然只要除以它的模长就能得到同向的单位向量 \(\boldsymbol{e}_0 = \frac{\boldsymbol{e}}{|\boldsymbol{e}|}\)，即
-</p>
-\begin{equation}
-\boldsymbol{e}_0 = (\frac{a}{ \sqrt{a^2+b^2+c^2}} ,\frac{b}{ \sqrt{a^2+b^2+c^2}},\frac{c}{ \sqrt{a^2+b^2+c^2}  })
-\end{equation}
-<p>
-此处可以有一张3D图片，注意到每个坐标就是原坐标/向量长度，其实就是向量与坐标轴夹角（设为 \(\alpha ,\beta,\gamma\)）的余弦值，即
-</p>
-\begin{equation}
-\boldsymbol{e}_0 = ( \cos \alpha ,\cos \beta, \cos \gamma )
-\end{equation}
-<p>
-这就是这个方向的单位向量 。既然是余弦值，还有一种自然的表示方式
-</p>
-\begin{equation}
-\cos \alpha  = \frac{ \boldsymbol{e} \cdot \boldsymbol{i}}{|\boldsymbol{e}|}
-\end{equation}
-<p>
-即
-</p>
-\begin{equation}
-\boldsymbol{e}_0 = ( \frac{ \boldsymbol{e} \cdot \boldsymbol{i}}{|\boldsymbol{e}|}, \frac{ \boldsymbol{e} \cdot \boldsymbol{j}}{|\boldsymbol{e}|}, \frac{ \boldsymbol{e} \cdot \boldsymbol{k}}{|\boldsymbol{e}|})
-\end{equation}
-<p>
-根据公式(4)(2)，直线上一点就可以表示为
-</p>
-\begin{equation}
-\label{}
-\begin{cases}
-x= x_0 + t \cos \alpha \\
-y = y_0 +t \cos \beta \\
-z = z_0 +t \cos \gamma
-\end{cases}
-\end{equation}
-<p>
-注意，\(t\)的含义是下一个点与已知点距离为方向向量的几倍，当取单位向量的时候，\(t\)其实就表示下一个点与当前点空间间距是多少，这一点隐含在(9)的定义里面。
+普肖尔河已经展开在我们旅人的眼前；远处荡漾着寒意，那是在难受的殚精竭神的酷热之后更加容易令人感受到的。穿过疏落地耸立在草原上的黑杨树、白桦树和白杨树的明明暗暗的绿叶，闪烁着带着冷气的火焰般的闪光，美丽的河水辉煌地袒露出银色的胸膛，群树的绿色鬈发茂密地垂拂在上面。这条河像是一个任性的女孩子，在那销魂荡魄的一刻，当忠实的镜子嫉妒地映出她充满着骄傲和耀眼的光彩的前额，百合花一样的双肩，披覆着暗沉的亚麻色发浪的大理石一样的脖颈的时候，当她没完没了地耍脾气，除掉一些装饰，又换上另外一些装饰的时候；——她几乎每年都要改变环境，选取新的河道，在周围点缀着各式各样新的景色。一排排的水车用笨重的轮子掬起广阔的水浪，猛烈地抛掷开去，溅出水花，撒成轻雾。
 </p>
 </div>
+<div id="outline-container-org59d8de1" class="outline-3">
+<h3 id="org59d8de1"><span class="section-number-3">1.1.</span> 次级标题</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+普肖尔河已经展开在我们旅人的眼前；远处荡漾着寒意，那是在难受的殚精竭神的酷热之后更加容易令人感受到的。穿过疏落地耸立在草原上的黑杨树、白桦树和白杨树的明明暗暗的绿叶，闪烁着带着冷气的火焰般的闪光，美丽的河水辉煌地袒露出银色的胸膛，群树的绿色鬈发茂密地垂拂在上面。这条河像是一个任性的女孩子，在那销魂荡魄的一刻，当忠实的镜子嫉妒地映出她充满着骄傲和耀眼的光彩的前额，百合花一样的双肩，披覆着暗沉的亚麻色发浪的大理石一样的脖颈的时候，当她没完没了地耍脾气，除掉一些装饰，又换上另外一些装饰的时候；——她几乎每年都要改变环境，选取新的河道，在周围点缀着各式各样新的景色。一排排的水车用笨重的轮子掬起广阔的水浪，猛烈地抛掷开去，溅出水花，撒成轻雾。
+</p>
 </div>
-<div id="outline-container-org7f5d3a1" class="outline-2">
-<h2 id="org7f5d3a1"><span class="section-number-2">2.</span> 二维情况的梯度 <a href="#citeproc_bib_item_1">[1]</a></h2>
+<div id="outline-container-org19977c6" class="outline-4">
+<h4 id="org19977c6"><span class="section-number-4">1.1.1.</span> 下级标题</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Here’s the thing, though: Matt gets a lot of stuff done. He gets it done well and is generally happy doing it. The things he writes about in this book will help you get stuff done, too. He is going to teach you how to make manageable changes so that you can achieve the things you would love to make happen, and he’ll show you how to do it without upending your life.<a href="#citeproc_bib_item_1">[1]</a>
+</p>
+
+
+<p>
+There is no doubt Matt is a hard worker. If you want to be productive and accomplish your goals, it’s a given that you will have to work hard. However, you do not need to sacrifice your family time, your fun time, or your health to do it. Matt is going to show you how to maximize the time that you have and get the most out of it.
+</p>
+
+
+<div id="org9b7ad19" class="figure">
+<p><img src="static/img/post1/2025-09-21_21-45-19_screenshot.png" alt="2025-09-21_21-45-19_screenshot.png" width="700px" />
+</p>
+<p><span class="figure-number">Figure 1: </span>This is the caption for the next figure link (or table)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb94db7b" class="outline-2">
+<h2 id="orgb94db7b"><span class="section-number-2">2.</span> 公式</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-函数 \(f(x,y)\) 沿着 \(x,y\) 方向的变化率就是函数在这两个方向上的偏导数 \(f_x,f_y\) ，但是函数不止会沿着这两个方向变化，我们想知道当沿着 <b>别的方向</b> 函数的变化率有多快，也就是说，从当前点 \((x_0,y_0)\)沿着任意一个方向走一小步，函数值变化量有多少，这个量我们定义为这个方向上的 <b>方向导数</b> 。
-首先要描述出来我们在关心的是哪个方向，我们可以找到这个方向上的一个单位向量 \(\boldsymbol{e}_0=(\cos \alpha ,\cos \beta)\).我们已知一个出发点 \((x_0,y_0)\).
-那么这个方向上下一个点 \((x,y)\) ,就可以表示为
+\(E = mc^2\) 是爱因斯坦著名的公式
 </p>
 \begin{equation}
-\begin{cases}
-x= x_0 + t \cos \alpha \\
-y = y_0 +t \cos \beta
-\end{cases}
+\label{1}
+F(s) = \int_{0-}^{ \infty } f(t) e^{-st} dt
 \end{equation}
-<p>
-那么方向导数就能定义为，下一个点 \((x,y)\) 和当前点 \((x_0,y_0)\) 在无限接近的情况下的变化率
-</p>
-\begin{equation}
-\frac{ \partial f }{ \partial \boldsymbol{e}_0 }\bigg|_{(x_0,y_0)} = \lim_{t \to 0} \frac{f(x,y)-f(x_0,y_0)}{t}= \frac{f(x_0+t \cos \alpha, y_0 + t \cos \beta )-f(x_0,y_0)}{t}
-\end{equation}
-<p>
-可以证明
-</p>
-\begin{equation}
-\frac{ \partial f }{ \partial \boldsymbol{e}_0  }\bigg|_{(x_0,y_0)}= f_x (x_0,y_0) \cos \alpha +f_y (x_0, y_0) \cos \beta
-\end{equation}
-<p>
-显然二维平面上能选的方向是无限多的，也就是有无穷多的方向导数。并且，沿着任意一个方向的变化率，即方向导数，可以用 \(x,y\) 方向上的偏导数表示出来。
-</p>
+</div>
+</div>
+<div id="outline-container-orgac4bbbe" class="outline-2">
+<h2 id="orgac4bbbe"><span class="section-number-2">3.</span> 代码块</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #721045;">print</span>(<span style="color: #00598b;">"Hello World"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbd2c9b3" class="outline-2">
+<h2 id="orgbd2c9b3"><span class="section-number-2">4.</span> Tikz图片</h2>
+<div class="outline-text-2" id="text-4">
 
-<p>
-我们想知道在无数多的方向导数中，沿着哪一个方向，或者说取哪一个方向 \(\boldsymbol{e}_0\) 的时候，方向导数最小/最大。
-为此，我们观察(10)的形式，发现可以规定一个特殊的向量，从而把(10)写成向量的乘积形式，规定向量 \(\boldsymbol{g}\) 为
+<div id="orgd00b46e" class="figure">
+<p><img src="./static/tikz/post1/test1.svg" alt="test1.svg" class="org-svg" width="200px" />
 </p>
-\begin{equation}
-\boldsymbol{g} = (f_x(x_0,y_0),f_y(x_0,y_0))
-\end{equation}
-<p>
-于是(10)写成：
-</p>
-\begin{equation}
-\frac{ \partial f }{ \partial \boldsymbol{e}_0 }\bigg|_{(x_0,y_0)}=\boldsymbol{g} \cdot \boldsymbol{e}_0 = |\boldsymbol{g}| \cos \left \langle \boldsymbol{g},\boldsymbol{e}_0 \right \rangle
-\end{equation}
-<p>
-显然当我们选定的 \(\boldsymbol{e}_0\) 方向和引入的特殊向量 \(\boldsymbol{g}\) 方向一致的时候，方向导数是最大的，且最大值就是 \(\boldsymbol{g}\) 的模长 \(|\boldsymbol{g}|\)，沿此方向函数增加最快；当选定的 \(\boldsymbol{e}_0\) 的方向与 \(\boldsymbol{g}\) 的方向反向的时候，方向导数最小，且最小值就是模长的相反数 \(-|\boldsymbol{g}|\)，沿此方向函数减小最快。
-</p>
-
-<p>
-所以我们把这个特殊的向量叫作函数在 \((x_0,y_0)\) 处的梯度，记作
-</p>
-\begin{equation}
-\label{}
-\boldsymbol{grad} f |_{(x_0,y_0)}= (f_x(x_0,y_0),f_y(x_0,y_0))
-\end{equation}
-<p>
-需要强调梯度是一个向量，特别的，它的模长是此处方向导数的最值；它的方向就指向变化率最大的那个方向。
-</p>
+<p><span class="figure-number">Figure 2: </span>This is the caption for the circuit.</p>
+</div>
 </div>
 </div>
 <div id="outline-container-references" class="outline-2">
-<h2 id="references"><span class="section-number-2">3.</span> References</h2>
+<h2 id="references"><span class="section-number-2">5.</span> References</h2>
 <div class="outline-text-2" id="text-references">
 <style>.csl-left-margin{float: left; padding-right: 0em;}
  .csl-right-inline{margin: 0 0 0 1em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>
-    <div class="csl-left-margin">[1]</div><div class="csl-right-inline">李 忠, 周 建莹, <i>高等数学/上册</i>. 北京大学出版社, 2004.</div>
+    <div class="csl-left-margin">[1]</div><div class="csl-right-inline">Kailong Liu, Yunlong Shang, Quan Ouyang, Widanalage Dhammika Widanage, “A Data-Driven Approach With Uncertainty Quantification for Predicting Future Capacities and Remaining Useful Life of Lithium-ion Battery,” <i>Ieee transactions on industrial electronics</i>, vol. 68, no. 4, pp. 3170–3180, Apr. 2021, doi: <a href="https://doi.org/10.1109/TIE.2020.2973876">10.1109/TIE.2020.2973876</a>.</div>
   </div>
 </div>
 </div>
 </div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+For note keeping, <a href="http://jblevins.org/projects/deft/">Deft</a> with Org mode make a cute couple.
+Pick a few popular papers and grind through the ambiguity. For my first handful of papers in a new area, I go line-by-line and search up all the unfamiliar terms to build that missing context.
+Once you’re past the initial slog, you can start applying the rest of the post (sampling, skimming, streamlining your approach). But I do think the first few should be deliberately hard and long.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+A <a href="http://doc.norang.ca/org-mode.html">great article</a> elaborates on this.
+</p></div></div>
+
+
 </div>
+</div></div>
 <div id="postamble" class="status">
 <div id='postamble' class='status'>
   <div class='postamble-meta'>
   <p class="author">Author: tuiwo</p>
   <p class="email">Email: fhywork@foxmail.com</p>
-  <p class="date">Date: 2025-11-30</p>
+  <p class="date">Date: 2026-01-11</p>
   <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.11)</p>
   </div>
   <div class="postamble-comments">
