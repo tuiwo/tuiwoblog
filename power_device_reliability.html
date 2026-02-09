@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-02-05 Thu 17:43 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>功率器件封装可靠性</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel='stylesheet' href='style.css'/>
+                 <script src='sidenotes.js' defer></script>
+                 <script src='comments.js'></script>
+<script type="module" src="https://esm.sh/giscus"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<style>.home-link { margin: 1.5rem 0; font-size: 0.9em; color: #777; }
+.home-link a { color: #4273b8; text-decoration: none; }
+.home-link a:hover { text-decoration: none; text-shadow: 0 0 1px #000; }
+</style>
+<div class='home-link'><a href='index.html'>⌂</a></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">功率器件封装可靠性</h1>
+<div class="stream-page">
+
+
+<nav class="stream-toc">
+<span class="stream-toc-label">Contents</span>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org13bf5b8">蠕变：与时间有关的行为</a>
+<ul>
+<li><a href="#org94fe240">简介</a></li>
+<li><a href="#org0a31b51">蠕变试验现象</a></li>
+<li><a href="#orge661d48">蠕变的物理机制</a>
+<ul>
+<li><a href="#orga52f020">扩散流动</a></li>
+<li><a href="#orgc156f9b">位错蠕变</a></li>
+<li><a href="#org8ceedec">机制总结 扩散 Arrhenius方程</a></li>
+</ul>
+</li>
+<li><a href="#orge71b346">蠕变模型</a>
+<ul>
+<li><a href="#org41fa48d">模型表达式</a></li>
+<li><a href="#orgd7d18d9">稳态蠕变模型</a></li>
+</ul>
+</li>
+<li><a href="#org437e58d">蠕变的寿命估算：时间-温度参数</a>
+<ul>
+<li><a href="#org37fc48c">Sherby-Dorn参数法</a></li>
+</ul>
+</li>
+<li><a href="#org4d779bb">小结</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div id="outline-container-org13bf5b8" class="outline-2">
+<h2 id="org13bf5b8">蠕变：与时间有关的行为</h2>
+<div class="outline-text-2" id="text-org13bf5b8">
+<p>
+<div class="stream-entry-meta">2026-02-02 | 功率器件,可靠性,蠕变</div>
+</p>
+<p>
+我从事功率半导体器件的可靠性研究/项目已经有一段时间了，但对这个方向始终提不起兴趣，幸亏同期还有一些其他更有意思的项目吊着命。尽管努力想发掘一点值得一提的东西，但在应用层面上仍然只是在电力电子里面老调重弹——更不幸的是，即便在电力电子领域这个调子也已经有人弹过了。除了给旧酒瓶子贴新标签以外只能缝缝补补。一个重要的原因是，虽然我们尝试在电力电子项目里应用这个方法，但是在这个方法涉及的各个领域里我们都不专业。
+</p>
+
+<p>
+促使我决定开始调研整理这个问题的因素主要有三个：
+</p>
+<ol class="org-ol">
+<li>我打算以后搞点别的东西玩玩，但是既然做过相关的项目，我最好还是把这个问题梳理一下留下点东西，把不懂的东西扫一扫了却心事，既干脆自在，又能留个档以后也许能派上用场；</li>
+<li>虽然这个问题不太有意思，但却是个越来越重要的问题，不断有朋友来和我沟通，让我无法在以往粗枝大叶的地方继续含混下去，如果能深入了解、整理一下，以后我只需要把这些材料传递给他们就能省下不少沟通的时间；</li>
+<li>也是直接原因，前一段时间其他部门的同事遇到了一些堪称奇怪的问题，我跟着开了几次会，但是始终想不通，说话也自觉不知所云。解决不了问题，让前去提供“技术支持”的我良心上受了诘难，而且一直十分困扰。此外，我发现随意滥用自己并不理解的非本专业术语的现象广泛存在，当谈及“温度梯度”的时候，我们可能并不知道这个词语真实的内涵。</li>
+</ol>
+
+<p>
+所以我决定零零散散地做一些阅读、整理和调研，尽量从基础机理的层面把这些问题整理个大概（也只是个大概，正如前面所说，在这些领域我不是专业的），免得像以前一样只是照本宣科地在电力电子领域背诵别人的只言片语。可以视这些内容为我的学习笔记。
+</p>
+</div>
+<div id="outline-container-org94fe240" class="outline-3">
+<h3 id="org94fe240">简介</h3>
+<div class="outline-text-3" id="text-org94fe240">
+<p>
+实际中，硬件周期性地加热和冷却会产生应力<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>，这些应力引将疲劳(fatigue)和蠕变(creep)耦合在一起，影响了器件封装中关键结构的寿命。对功率器件封装而言，以下几个焊接界面是最关键的结构：芯片表面的键合线结构、芯片底面的焊料结构、DBC与基板(baseplate)的焊料结构。
+</p>
+
+<p>
+对我而言，蠕变这种时间相关的机制很奇特，因此我将从此开始。蠕变令人深刻的一点是它引发的变形会随时间推移而积累，而通常我们理想化地认为弹性应变和塑性应变是应力的瞬时响应。时间作为变量引入将会让分析顿时变得复杂。
+</p>
+
+<p>
+不同材料对蠕变的敏感度不同。通常金属材料在处于绝对熔点温度的30%~60%时才会表现出显著的蠕变变形；外界条件相同时，铬镍铁合金的蠕变变形发生速度明显慢于不锈钢、铝合金等材料，因此高温环境中使用的金属材料通常都包含铬镍钴等合金化元素。
+</p>
+</div>
+</div>
+<div id="outline-container-org0a31b51" class="outline-3">
+<h3 id="org0a31b51">蠕变试验现象</h3>
+<div class="outline-text-3" id="text-org0a31b51">
+<p>
+典型的蠕变测试是在恒温、恒定外力情况下测量样品随时间变化的变形，如下图1所示。在此过程中，最重要的特性是应变积累的速率 \(\dot{\varepsilon} = \frac{d \varepsilon}{dt}\).
+</p>
+
+<ul class="org-ul">
+<li>施加负载以后，发生瞬时弹性应变（也许还有塑性应变），然后蠕变逐渐累积；</li>
+<li>蠕变第一阶段(初级蠕变/瞬时蠕变/primary creep)：此阶段内，\(\dot{\varepsilon}\)初始较大然后不断减小，最终接近常数；</li>
+<li>蠕变第二阶段(稳态蠕变/steady-state creep/secondary creep)：蠕变速率 \(\dot{\varepsilon}\) 是恒定的，即曲线是线性的。在该蠕变阶段通常持续的时间最长；</li>
+<li>蠕变第三阶段：速率会增加并导致最终的失效，这种失效通常称为断裂。</li>
+</ul>
+
+
+<div id="org4b99bd0" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig1.svg" alt="fig1.svg" class="org-svg" width="500px" />
+</p>
+<p><span class="figure-number">Figure 1: </span>恒定载荷下蠕变随时间的发展</p>
+</div>
+
+
+<p>
+从蠕变曲线中，我们可以得到2条直觉认识：
+</p>
+<ol class="org-ol">
+<li>虽然外力/负载恒定，但材料的变形并不是稳定的，而是随着时间推移不断累积；</li>
+<li>这种时变的蠕变变形在不同的时间尺度上特性也是不同的，在不同的阶段其蠕变速率不同。</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orge661d48" class="outline-3">
+<h3 id="orge661d48">蠕变的物理机制</h3>
+<div class="outline-text-3" id="text-orge661d48">
+<p>
+我们应该稍微了解一下金属、合金这样的晶体材料蠕变的物理机制。蠕变涉及的复杂物理机制总体上可以分为两大类：扩散流动和位错蠕变。
+</p>
+</div>
+<div id="outline-container-orga52f020" class="outline-4">
+<h4 id="orga52f020">扩散流动</h4>
+<div class="outline-text-4" id="text-orga52f020">
+</div>
+<ul class="org-ul">
+<li><a id="orgc286440"></a>晶体中的空位缺陷<br />
+<div class="outline-text-5" id="text-orgc286440">
+<ul class="org-ul">
+<li>固体材料可以根据原子或离子间排列的功率进行分类：
+<ul class="org-ul">
+<li>晶体：原子在很大范围内重复或周期性排列；</li>
+<li>非晶：原子的排列缺乏大范围的排列规律</li>
+</ul></li>
+<li>单晶 多晶 晶界
+<ul class="org-ul">
+<li>单晶：原子的周期性和重复性排列非常完美，延伸到整个样品而没有中断；</li>
+<li>多晶：由很多小的晶体或晶粒(grains)组成；
+<ul class="org-ul">
+<li>晶界(grain boundary)：不同晶粒的交界面</li>
+</ul></li>
+</ul></li>
+<li>实际晶体中存在着大量缺陷(点缺陷、线缺陷、面缺陷)
+<ul class="org-ul">
+<li>空位(vacancy)：正常的节点位置缺少了一个原子</li>
+<li>自间隙原子：一个原子挤进了间隙位置</li>
+</ul></li>
+</ul>
+
+<div id="org61513a0" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig2.svg" alt="fig2.svg" class="org-svg" width="300px" />
+</p>
+<p><span class="figure-number">Figure 2: </span>晶体中的空位缺陷</p>
+</div>
+</div>
+</li>
+<li><a id="org7e1c325"></a>空位扩散<br />
+<div class="outline-text-5" id="text-org7e1c325">
+<p>
+当晶体承受应力时，空位更容易在与应力方向垂直的晶界附近自发形成，导致此处空位浓度较高，从而引发空位从高浓度区域向低浓度区域扩散，最终导致晶粒形状发生变化，引发蠕变变形。
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgc156f9b" class="outline-4">
+<h4 id="orgc156f9b">位错蠕变</h4>
+<div class="outline-text-4" id="text-orgc156f9b">
+</div>
+<ul class="org-ul">
+<li><a id="org3062eef"></a>晶体中的线缺陷：位错<br />
+<div class="outline-text-5" id="text-org3062eef">
+<p>
+位错指的是晶体内存在线状错排，包括刃型位错和螺型位错。我们在这里只展示刃型位错来获得一些简单直观的理解。
+</p>
+
+<p>
+刃型位错如下图所示，这种缺陷的特征是有一个原子平面在晶体内部的一条边缘线(位错线)上终止了。在位错线周围原子排列会产生局部畸变。
+</p>
+
+
+
+<div id="org1464964" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig3.svg" alt="fig3.svg" class="org-svg" width="200px" />
+</p>
+<p><span class="figure-number">Figure 3: </span>刃型位错缺陷</p>
+</div>
+</div>
+</li>
+<li><a id="org6ca10f5"></a>位错移动和塑性变形<br />
+<div class="outline-text-5" id="text-org6ca10f5">
+<p>
+塑性变形和大量的位错运动有关。当晶体承受 <b>切应力</b> 的时候，位错会发生滑移(slip)，每次只移动一个原子间距，最终这个终止的面会移动到晶体的表面，形成一个台阶，这个过程如下图所示。位错滑移所在的平面称为滑移面。
+</p>
+
+<p>
+大量位错滑移面集中处最终会产生大量的位错滑移台阶，塑性变形经常集中于此。
+</p>
+
+
+<div id="orgcee7b8c" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig4.svg" alt="fig4.svg" class="org-svg" width="500px" />
+</p>
+<p><span class="figure-number">Figure 4: </span>位错滑移与滑移台阶</p>
+</div>
+</div>
+</li>
+<li><a id="org05e6bcf"></a>位错蠕变(也称为幂律蠕变)<br />
+<div class="outline-text-5" id="text-org05e6bcf">
+<p>
+一种用来解释蠕变的位错移动机制还位错攀移。当位错的滑移面上存在障碍时，位错无法继续滑移；此时如果想要继续变形位错就只能离开原本的滑移面，迁移到相邻的平面，这个过程称为攀移。这种位错攀移需要结合空位缺陷扩散的方式，因此这种蠕变的过程似乎是受到扩散控制的。此外，这种攀移过程也是和时间相关的。
+</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-org8ceedec" class="outline-4">
+<h4 id="org8ceedec">机制总结 扩散 Arrhenius方程</h4>
+<div class="outline-text-4" id="text-org8ceedec">
+<p>
+通过对蠕变物理机制简单的了解，可以发现蠕变与扩散过程(两种机理都涉及空位的扩散)相关。
+</p>
+
+<p>
+扩散指的是通过原子运动而形成的物质输运现象，这个过程发生要求满足2个基本前提：
+</p>
+<ol class="org-ol">
+<li>有空缺的相邻位点，即有可以转移的位置；</li>
+<li>原子得有足够的能量解除原本位置的束缚并完成移动，即有能量</li>
+</ol>
+</div>
+<ul class="org-ul">
+<li><a id="org62b3964"></a>扩散发生有多快：传质速率(Rate of mass transfer)<br />
+<div class="outline-text-5" id="text-org62b3964">
+<p>
+通常用扩散通量(diffusion flux, \(J\))衡量扩散发生的速率，即传质速率。
+</p>
+
+<p>
+扩散通量 \(J\)定义为为单位时间内垂直通过单位截面积上的扩散物质质量\(M\)(或原子数：
+</p>
+\begin{equation}
+J= \frac{M}{At}
+\end{equation}
+<p>
+其中， \(A\)表示扩散发生的截面积， \(t\) 表示扩散时间。
+</p>
+
+<p>
+很容易拿电流来进行简单的类比，如果输运的物质恰好是电荷 \(Q\)，那么简单来看：
+</p>
+<ul class="org-ul">
+<li>电流的定义 \(I=Q/t\)</li>
+<li>电流密度的定义 \(J=I/A=Q/At\)</li>
+</ul>
+
+<p>
+显然扩散通量之于物质输运，就如同电流密度之于电荷移动：当电流密度很大的时候，说明电子正在进行快速运动。
+</p>
+</div>
+</li>
+<li><a id="org6083670"></a>扩散系数(diffusion coefficient)<br />
+<div class="outline-text-5" id="text-org6083670">
+<p>
+使用电流来类比物质输运是非常自然的，在半导体物理里面是顺理成章的推导，在这里我们将也能获得一些直觉结果。
+</p>
+
+<p>
+在稳态情况（即任意点上的状态不会随时间发生变化）下，如果材料内部物质浓度 \(C\) 存在不均匀，那么在浓度差异的驱动下将会产生扩散，这个过程可以通过Fick's first law进行描述：
+</p>
+
+\begin{equation}
+J=-D \frac{d C}{d x}
+\end{equation}
+
+<p>
+其中，\(D\)称为扩散系数；\(\frac{dC}{dx}\)表示沿着\(x\)方向的浓度梯度。
+</p>
+
+<p>
+假设扩散在单位面积的材料内相差单位距离的两点(m,n)之间发生(\(A=1,dx=1\))，上式就是
+</p>
+\begin{equation}
+J=-DdC
+\end{equation}
+<p>
+再使用欧姆定律进行简单类比，此时 \(A=1\)，所以电流密度就等于电流，假设m点和n点之间的电压（电势差）为\(V\)，电阻为\(R\)，电导为\(G\)，那么：
+</p>
+\begin{equation}
+I = \frac{1}{R}V = GV
+\end{equation}
+
+<ul class="org-ul">
+<li>驱动力：电压-浓度差</li>
+<li>速率：电流密度-扩散通量</li>
+<li>系数：电导(电阻倒数)-扩散系数</li>
+</ul>
+
+<p>
+因此，扩散系数\(D\)的大小描述了原子扩散承受的阻力，或者说扩散的难易程度：
+</p>
+<ul class="org-ul">
+<li>\(D\)较大意味着扩散的“电导”比较大，或者说“电阻”比较小，扩散很容易进行；</li>
+<li>\(D\)较小意味着扩散的“电导比较小”，或者说“电阻”比较大，扩散较难进行。</li>
+</ul>
+</div>
+</li>
+<li><a id="org5b92ebd"></a>Arrhenius关系<br />
+<div class="outline-text-5" id="text-org5b92ebd">
+<p>
+前面提到过，扩散发生的必然要求之一是有能量，即原子能量水平影响了扩散的难易程度，现在我们可以建立能量和扩散系数之间的关系：
+</p>
+<ul class="org-ul">
+<li>当原子能量比较高的时候，扩散很容易发生，因此扩散系数\(D\)比较大；</li>
+<li>当原子能量比较高的时候，扩散难以发生，因此扩散系数\(D\)比较小。</li>
+</ul>
+
+<p>
+影响原子能量的重要因素是温度：
+</p>
+<ul class="org-ul">
+<li>温度提升会加剧原子相对于自身平衡位置的平均振动，在此能量水平下，原子更容易离开原本的位置发生扩散</li>
+<li>这种情况就是热激活的例子。</li>
+</ul>
+
+<p>
+这个温度-能量-扩散难易程度-扩散系数的关系可以通过Arrhenius关系来描述，即扩散系数存在温度相关性：
+</p>
+\begin{equation}
+D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
+\end{equation}
+<p>
+其中，\(D_0\)是个常数，\(Q_d\)是扩散所需要的激活能，\(R\)是气体常数，\(T\)为绝对温度。
+</p>
+
+<p>
+在热激活的物理过程中，Arrhenius关系的应用很广泛；其中激活能可以单位物质发生热激活过程（例如扩散）所需要的能量:
+</p>
+<ul class="org-ul">
+<li>所需要的激活能越大，说明该物理过程越难发生，在扩散过程中，对应扩散系数越小。</li>
+</ul>
+
+<p>
+从物理机理上，蠕变过程受扩散过程控制，因此可以预期蠕变的应变发生速率与温度存在一个Arrhenius项，即：
+</p>
+\begin{equation}
+\dot{\varepsilon} \propto \exp \left( - \frac{Q_d}{RT} \right)
+\end{equation}
+
+<p>
+所以接下来有必要从蠕变物理机理涉及的因素出发刻画蠕变变性的数学形式。
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge71b346" class="outline-3">
+<h3 id="orge71b346">蠕变模型</h3>
+<div class="outline-text-3" id="text-orge71b346">
+<p>
+蠕变的物理机制揭示了几个重要的影响因素：
+</p>
+<ol class="org-ol">
+<li>时间：从蠕变试验的曲线上可以清晰看到这种复杂行为；此外，位错攀移和时间有关；蠕变引发的塑性形变显然也会随着时间积累；</li>
+<li>应力：例如当承受切应力的时候，会引发位错滑移；</li>
+<li>温度：通过提供更多能量加剧热激活过程（扩散）。</li>
+</ol>
+
+<p>
+这些因素导致了一些重要的现象：
+</p>
+<ol class="org-ol">
+<li>金属和陶瓷：发生蠕变通常意味着较高的应力水平（接近屈服点），温度约为50%熔点之上；</li>
+<li>电子焊料(60Sn-40Pb)：熔点仅为185摄氏度，因此在室温条件下也具有蠕变潜力，\(298K/458K=0.65\)；</li>
+<li>钨丝要在非常高的温度里工作，因此需要强化抗蠕变能力；</li>
+<li>电子封装中的陶瓷基板熔点在2000摄氏度以上，因此常规使用不会蠕变。</li>
+</ol>
+</div>
+<div id="outline-container-org41fa48d" class="outline-4">
+<h4 id="org41fa48d">模型表达式</h4>
+<div class="outline-text-4" id="text-org41fa48d">
+<p>
+时间 \(t\)、温度 \(T\)、应力 \(\sigma\)对蠕变应变 \(\varepsilon\)的影响可以通过下面的表达式描述：
+</p>
+\begin{equation}
+\varepsilon = f(\sigma)g(t)\exp \left( - \frac{Q}{RT} \right)
+\end{equation}
+<p>
+其中 \(Q\)表示蠕变激活能， \(f(\sigma)\)表达式描述应力的影响，有以下不同的形式：
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Name</td>
+<td class="org-left">\(f(\sigma)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Norton</td>
+<td class="org-left">\(A \sigma^n\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Prandtl</td>
+<td class="org-left">\(B\sinh(b \sigma)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Dorn</td>
+<td class="org-left">\(C\exp(c \sigma)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Garafalo</td>
+<td class="org-left">\(D\sinh(f \sigma)^n\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+在不同的蠕变阶段（瞬态蠕变、稳态蠕变、第三阶段蠕变）蠕变行为显然也不一样，这种特性通过 \(g(t)\)刻画：
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Stage</td>
+<td class="org-left">\(g(t)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">primary creep</td>
+<td class="org-left">\(1+et^{1/3}  \)</td>
+</tr>
+
+<tr>
+<td class="org-left">secondary creep</td>
+<td class="org-left">\(t\)</td>
+</tr>
+
+<tr>
+<td class="org-left">tertiary creep</td>
+<td class="org-left">\(t^m\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+进一步，应变速率可以写为：
+</p>
+\begin{equation}
+\dot{\varepsilon} = f(\sigma) \frac{d g(t)}{dt} \exp \left( - \frac{Q}{RT} \right)
+\end{equation}
+</div>
+</div>
+<div id="outline-container-orgd7d18d9" class="outline-4">
+<h4 id="orgd7d18d9">稳态蠕变模型</h4>
+<div class="outline-text-4" id="text-orgd7d18d9">
+<p>
+第二阶段蠕变有较好的特性：
+</p>
+<ol class="org-ol">
+<li>持续时间比较长；</li>
+<li>蠕变应变率\(\dot{\varepsilon}\)是恒定的；</li>
+</ol>
+<p>
+因此通常在这个阶段对易蠕变的材料进行条件设计。
+</p>
+
+<p>
+稳态蠕变应变速率常用下面的现象方程描述：
+</p>
+\begin{equation}
+\dot{ \varepsilon_{sc}   } = A \sigma^{n} \exp {\left( - \frac{Q}{RT} \right)}
+\end{equation}
+
+<p>
+更加详细的模型表示为：
+</p>
+\begin{equation}
+\dot{ \varepsilon_{sc}  }= \frac{A'}{d^{q} T}\sigma^{n} \exp \left( - \frac{Q}{RT} \right)
+\end{equation}
+<p>
+其中， \(A', q, n \)参数的具体值取决于具体的蠕变机理， \(d\)是平均晶粒直径。
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">物理机制</td>
+<td class="org-left">\(n\)</td>
+<td class="org-right">\(q\)</td>
+<td class="org-left">描述</td>
+</tr>
+
+<tr>
+<td class="org-left">扩散流动(Nabarro-Herring/Coble蠕变)</td>
+<td class="org-left">1</td>
+<td class="org-right">2</td>
+<td class="org-left">在低应力、高温度下发生</td>
+</tr>
+
+<tr>
+<td class="org-left">扩散辅助的位错蠕变</td>
+<td class="org-left">3~8</td>
+<td class="org-right">0</td>
+<td class="org-left">在高应力、中等温度发生</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+基于蠕变发生时内部物理机理的复杂性（如上表展示），可以预期公式(10)无法覆盖所有应力水平和温度下的蠕变变形。
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orga0e50a7"></a>常用的焊料稳态蠕变模型<br />
+<div class="outline-text-6" id="text-orga0e50a7">
+<p>
+例如在焊料的蠕变模型中，往往需要求助比公式(10)更复杂的形式：
+</p>
+\begin{equation}
+\dot{\varepsilon_{sc} } = C \left( \frac{G}{T} \right)\sinh \left( \frac{a \sigma}{G} \right)^{n} \exp \left( - \frac{Q}{RT} \right)
+\end{equation}
+<p>
+其中， \(C,a,n\)是常数， \(G\)是剪切模量。
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org437e58d" class="outline-3">
+<h3 id="org437e58d">蠕变的寿命估算：时间-温度参数</h3>
+<div class="outline-text-3" id="text-org437e58d">
+<p>
+针对单纯的、恒定应力下的蠕变现象我们最后的一个问题是应该如何评估其寿命。
+</p>
+
+<p>
+简单设想，如果我们能够将失效时间与影响因素的关系表示出来，就能通过控制变量法获得模型参数、唯一地计算失效时间。
+</p>
+
+<p>
+虽然前面的分析缺乏直接可用的模型，但却可以导出性能指标(这里是蠕变应变)-时间关系。当处外力为\(\sigma\)、温度为 \(T\)时，稳态蠕变阶段的模型，例如公式(9)，显示应变速率 \(\dot{\varepsilon_{sc} }\)是个常数，据此粗略地估计时刻 \(t\)时蠕变应变为：
+</p>
+\begin{equation}
+\varepsilon = A \sigma^{n} t \exp \left( - \frac{Q}{RT} \right)
+\end{equation}
+
+<p>
+当应变累积到一定程度\(\varepsilon_{0}\)(常数)的时候认为发生失效，对应的时间可以视为寿命\(t_r\)，那么
+</p>
+\begin{equation}
+\varepsilon_{0} = A \sigma^{n} t_{r} \exp \left( - \frac{Q}{RT} \right)
+\end{equation}
+
+<p>
+接下来似乎只要利用控制变量的方法（加速实验）然后简单外推就能得到这个模型:
+</p>
+<ul class="org-ul">
+<li>首先固定应力\(\sigma\)，改变温度\(T\)，记录\(t_r\)，可以计算出激活能\(Q\)；</li>
+<li>其次固定温度\(T\)，改变应力\(\sigma\)，记录 \(t_r\)，可以计算指数 \(n\).</li>
+</ul>
+
+<p>
+遗憾的是这样的方法似乎并不现实，当不同蠕变机理主导的时候，模型中的参数也会发生变化，这一点可以从上张表格的 \(n,q\)的取值中看出来：
+</p>
+<ol class="org-ol">
+<li>激活能\(Q\)在温度和应力不同的情况下可能会因蠕变机理改变而变化，例如高纯铝在大约绝对熔点的50%以下时激活能减小；</li>
+<li>当降低应力 \(\sigma\)获取 \(n\)时，主导机理的改变可能会导致 \(n\)在较小应力下发生突然改变，从而无法使用大应力实验得到的参数；然而，在这个小应力范围（但更接近实际使用情况）内，想要通过充分的实验得到真实的 \(n\)的取值不实际，实验可能持续几十年。</li>
+</ol>
+
+<p>
+上述的外推方法在实际中效果不太好，为此需要引入一些观察、假设形成一些相对折中但也更成功方法，例如Sherby-Dorn参数法和Larson-Miller参数法，这些方法都涉及到时间-温度参数的使用。
+</p>
+</div>
+<div id="outline-container-org37fc48c" class="outline-4">
+<h4 id="org37fc48c">Sherby-Dorn参数法</h4>
+<div class="outline-text-4" id="text-org37fc48c">
+<ul class="org-ul">
+<li>Sherby-Dorn参数法的关键假设是激活能\(Q\)是个常数；</li>
+<li>在此基础上，我们可以很简单地改变温度得到激活能，然后只需要解决\(n\)的问题就可以了；</li>
+<li>如果固定任意温度，然后降低应力以获得 \(n\)，那么随着应力水平逐渐降低，失效时间\(t_r\)大幅延长以致不可能完成；</li>
+<li>因此如果能够缩短低应力水平下的失效时间，就有希望在实验室内、在较短的时间内收集到更多可用的数据；</li>
+<li>观察方程(13)，当应力固定在一个低水平情况下， \(\theta_r = t_r \exp ( - Q/RT )=const\)，即\(\theta _r\)是一个常数，因此通过提高温度可以降低失效时间 \(t_r\)；</li>
+<li>因此，一个聪明的做法是：在降低应力水平的同时，提高蠕变的温度，从而将失效时间控制到可以进行的水平内；</li>
+<li>\(\theta _r\)是一个时间-温度参数，其对数形式\(log \theta_r\)就称为Sherby-Dorn参数\(P_{SD}\)，Sherby-Dorn参数法通过建立\(\sigma- P_{SD}\)关系并利用常数激活能假设，可以基于较多的实验点计算某个应力水平、温度水平下的蠕变寿命。</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4d779bb" class="outline-3">
+<h3 id="org4d779bb">小结</h3>
+<div class="outline-text-3" id="text-org4d779bb">
+<p>
+到这里关于单纯蠕变的基本情况差不多理清了，感觉有不少收获。不过那些真正复杂的问题还没有提及，例如变化应力下的蠕变、应力松弛等，等把疲劳整理以后再来看这些问题会更加合适。
+</p>
+
+
+<p>
+<details class="stream-entry-comments"><summary>💬 评论</summary><div class="stream-entry-comments-inner"><giscus-widget repo="tuiwo/blogdiscussion" repoid="R_kgDOP0EuWQ" category="General" categoryid="DIC_kwDOP0EuWc4Cvtd5" mapping="specific" term="reli-creep" reactionsenabled="1" emitmetadata="0" inputposition="top" theme="preferred_color_scheme" lang="zh-CN" loading="lazy"></giscus-widget></div></details>
+</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+我们将会回忆一下什么是应力，不过不是在这个小空白。
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div id='postamble' class='status'>
+  <div class='postamble-meta'>
+  <p class="author">Author: tuiwo</p>
+  <p class="email">Email: fhywork@foxmail.com</p>
+  <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.11)</p>
+  </div>
+</div>
+</div>
+</body>
+</html>

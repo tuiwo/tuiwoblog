@@ -1000,10 +1000,10 @@ body.homepage .heatmap-tooltip {
 .stream-page .outline-2::before {
   content: "";
   position: absolute;
-  left: 0.4rem;
+  left: 0.42rem;
   top: 1.6rem;
   bottom: -0.5rem;
-  width: 0.1rem;
+  width: 0.06rem;
   background: rgba(180, 180, 180, 0.4);
 }
 
@@ -1034,13 +1034,13 @@ body.homepage .heatmap-tooltip {
   margin: 0.35rem 0 0.6rem;
 }
 
-/* 记录内部的子标题（示例中的“标题1/2”） */
-.stream-page .outline-2 h3 {
-  font-size: 1.08rem;
-  margin-top: 0.9rem;         /* 和前面的正文稍微拉开一点 */
-  margin-bottom: 0.25rem;
-  font-weight: 600;
-}
+/* /\* 记录内部的子标题（示例中的“标题1/2”） *\/ */
+/* .stream-page .outline-2 h3 { */
+/*   font-size: 1.08rem; */
+/*   margin-top: 0.9rem;         /\* 和前面的正文稍微拉开一点 *\/ */
+/*   margin-bottom: 0.25rem; */
+/*   font-weight: 600; */
+/* } */
 
 /* 子标题下面的段落 */
 .stream-page .outline-2 .outline-text-3 > p {
@@ -1048,7 +1048,7 @@ body.homepage .heatmap-tooltip {
 }
 
 
-.stream-page .stream-entry-comments {
+/* .stream-page .stream-entry-comments { */
   margin-top: 0.4rem;
 }
 
@@ -1150,25 +1150,10 @@ body.homepage .heatmap-tooltip {
 
 /* stream 每条记录标题下面的小字 meta 行 */
 .stream-page .stream-entry-meta {
-  margin: 0.1rem 0 0.5rem;
-  font-size: 0.82em;
-  color: #999;
-  font-family: "Open Sans","Noto Sans SC",sans-serif;
-}
-
-/* 如果想突出日期 / 关键词，也可以分别加颜色 */
-.stream-page .stream-entry-meta strong {
-  font-weight: 600;
-}
-
-
-
-/* stream 每条记录标题下面的小字 meta 行 */
-.stream-page .stream-entry-meta {
   margin: -0.6rem 0 0.5rem 0;
   font-size: 0.8em;
-  color: #999;
-  font-family: "Open Sans","Noto Sans SC",sans-serif;
+  color: #777;
+  font-family: "Noto Serif SC,"Open Sans","Noto Sans SC",sans-serif;
 }
 
 /* 如果想突出日期 / 关键词，也可以分别加颜色 */
