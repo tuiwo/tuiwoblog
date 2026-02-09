@@ -559,10 +559,10 @@ body.homepage .content:has([value="Reading"]:checked) li:has([data-tags~="#Readi
 body.homepage .content:has([value="Learning"]:checked) li:has([data-tags~="#Learning"]) {
   display: list-item;
 }
-body.homepage .content:has([value="DirtyHands"]:checked) li:has([data-tags~="#DirtyHands"]) {
+body.homepage .content:has([value="Building"]:checked) li:has([data-tags~="#Building"]) {
   display: list-item;
 }
-body.homepage .content:has([value="Organizing"]:checked) li:has([data-tags~="#Organizing"]) {
+body.homepage .content:has([value="File"]:checked) li:has([data-tags~="#File"]) {
   display: list-item;
 }
 
