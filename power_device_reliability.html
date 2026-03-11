@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-02-09 Mon 22:33 -->
+<!-- 2026-03-11 Wed 10:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>功率器件封装可靠性</title>
@@ -273,6 +273,18 @@
 <li><a href="#org4d779bb">小结</a></li>
 </ul>
 </li>
+<li><a href="#org359f315">复杂的时间 Part 1</a>
+<ul>
+<li><a href="#org2a56141">等温热循环与饱和现象</a></li>
+<li><a href="#org67d5219">蠕变变形模型与松弛行为</a>
+<ul>
+<li><a href="#orga0d12bf">恒定应力情况</a></li>
+<li><a href="#org6ed9ff6">恒定应变情况（松弛行为）</a></li>
+<li><a href="#orgc805449">恒温恒应变工况</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -382,6 +394,7 @@
 </ul></li>
 </ul>
 
+
 <div id="org61513a0" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig2.svg" alt="fig2.svg" class="org-svg" width="300px" />
 </p>
@@ -412,7 +425,6 @@
 <p>
 刃型位错如下图所示，这种缺陷的特征是有一个原子平面在晶体内部的一条边缘线(位错线)上终止了。在位错线周围原子排列会产生局部畸变。
 </p>
-
 
 
 <div id="org1464964" class="figure">
@@ -864,12 +876,436 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 </div>
 </div>
 </div>
+<div id="outline-container-org359f315" class="outline-2">
+<h2 id="org359f315">复杂的时间 Part 1</h2>
+<div class="outline-text-2" id="text-org359f315">
+<p>
+<div class="stream-entry-meta">2026-02-13 | 功率器件,可靠性,蠕变</div>
+</p>
+<p>
+我本来想先写疲劳相关的内容，但还是决定直接聚焦到最初困扰我的那些问题上：
+</p>
+<ol class="org-ol">
+<li>器件工作时，不断延长循环时间怎么影响器件寿命？</li>
+<li>时间是怎么产生破坏并影响器件寿命的？</li>
+</ol>
+
+
+<p>
+这些问题都与曾经困扰我的那个现象相关：在产品验证环节，一颗通过相关标准验证的芯片（在数分钟热循环工况中通过1000次测试）轻松通过了以天为周期的带载循环（数十次），但是在小时级别的带载循环中键合线寿命只有200次左右。
+</p>
+
+
+<p>
+从三个实验数据中任意取两个点计算时间的影响，可以发现存在两个截然不同的区域：
+</p>
+<ol class="org-ol">
+<li>分钟级-小时级：循环寿命迅速降低；</li>
+<li>小时级-天级：循环寿命变化相对较小。</li>
+</ol>
+
+
+<p>
+尽管在这个案例中键合线寿命的表现是惊人的（很大程度上可能要归因于该器件质量不达标），但这个现象实际并非偶然，只是此处不合适的设计（内部结构、材料等）放大了这个问题。例如，我们很快可以在infineon的应用手册中找到相关的结果：功率器件的功率循环能力在0.1s-60s的范围内随加热时间延长而下降，在加热时间大于60s的范围内则近似维持稳定<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>。
+</p>
+
+
+<p>
+关键是为什么？
+</p>
+</div>
+<div id="outline-container-org2a56141" class="outline-3">
+<h3 id="org2a56141">等温热循环与饱和现象</h3>
+<div class="outline-text-3" id="text-org2a56141">
+<p>
+通过前面对蠕变的介绍，我们容易产生一种错误的印象：既然在恒定应力的情况下，蠕变导致的形变会随着时间不断积累，那么无限延长循环时间将会导致一个热循环就可以摧毁连接处。
+</p>
+
+<p>
+但实际中热循环过程如下（此处以最经典的元件-焊点-衬底结构为例，芯片的热膨胀系数\(\alpha _{c}\)，底板热膨胀系数 \(\alpha _{s}\)，且存在关系 \(\alpha _{c}<\alpha _{s}\)，结构中所有部分温度是相同的，同样的结论也适用于其他焊面）：
+</p>
+
+
+<div id="orgce810a7" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig5.svg" alt="fig5.svg" class="org-svg" width="500px" />
+</p>
+<p><span class="figure-number">Figure 5: </span>热循环中焊接结构的变形</p>
+</div>
+
+
+<p>
+可以发现，当整体结构处于高温状态时，由于上面的组件和下面的底板由于热膨胀系数不匹配，其横向变化量不同，底板受热伸长更多，相当于将焊料横向拉长；处于低温状态时，底板收缩更多，同样将焊料挤压。
+</p>
+
+
+<p>
+热循环最高温处，焊料水平方向形变：
+</p>
+\begin{equation}
+L_{max} = L(\alpha _{s} - \alpha _{c} ) (T_{max}-T_{0})
+\end{equation}
+<p>
+热循环最低温处，焊料水平方向形变：
+</p>
+\begin{equation}
+L_{min}= L(\alpha _{s} - \alpha _{c} ) (T_{min}-T_{0})
+\end{equation}
+
+
+<p>
+换句话说，热循环中连接结构经历的并不是恒定应力过程，而是恒定应变过程：每次系统处于高温点时，焊料都被上下结构拉伸到同一个位置；每次系统处于低温点时，焊料都被上下结构挤压到同一个位置。
+</p>
+
+
+<p>
+热循环这种特性决定了焊接结构的蠕变并不像蠕变试验中那样受恒定应力无限发展，而是存在边界。显然，在一次热循环过程中，焊料发生的形变不会超过 \(L_{max}-L_{min}=L(\alpha _{s}-\alpha _{c})(T_{max}-T_{min})\)，那么一次热循环中所能累积的最大非弹性形变也不会超过这个数值，而真正威胁器件寿命的就是这些非弹性形变。换句话说，即便无限延长温度循环中高温阶段的时间，焊料并不会因无限增长的蠕变形变发生失效，因为该过程中总的非弹性形变会不断增长但被约束在上述边界值之内，存在饱和现象。
+</p>
+
+<p>
+另外一个与之对称的问题是：如果无限缩短加热时间，材料的形变和寿命如何变化？这里我们可以简单地思考其中的逻辑关系：工程材料的三种主要变形形式（弹性变形、塑性变形、蠕变变形）中只有蠕变变形是与时间相关的，弹性变形和塑性变形都是瞬时发生的。尽管塑性变形与蠕变变形的物理机理类似，但是塑性变形在材料受力超过一定限度时就瞬间发生。
+</p>
+
+<p>
+当无限缩短循环时间时，蠕变变形的影响消失了，只需要考虑其余两者。换言之，在某个固定的温度条件下进行循环，无限短的循环时间使材料处于循环应力或者循环形变的情况下。同样，只要温度循环的最高温和最低温保持不变，材料承受的应力或者应变就不变，此时结构的寿命同样发生饱和。
+</p>
+
+<p>
+综合来看我们可以总结如下：只改变温度循环的循环时间、其他条件保持不变的情况下，随着循环时间不断延长，焊接结构的寿命不断降低但最终饱和到一个固定的下界；同样随着循环时间无限缩短，焊接结构的寿命不断增加但最终会饱和到一个固定的上界。
+</p>
+</div>
+</div>
+<div id="outline-container-org67d5219" class="outline-3">
+<h3 id="org67d5219">蠕变变形模型与松弛行为</h3>
+<div class="outline-text-3" id="text-org67d5219">
+<p>
+为了直观地展示影响焊接结构寿命的、与时间有关的过程，首先利用最简单的模型进行一些数学描述，这个模型使用一个弹簧模拟材料中的弹性变形，使用一个黏性环节模拟材料中与时间有关的变形，如下图所示。
+</p>
+
+
+<div id="org336d540" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig6.svg" alt="fig6.svg" class="org-svg" width="300px" />
+</p>
+<p><span class="figure-number">Figure 6: </span>蠕变的最简模型</p>
+</div>
+</div>
+<div id="outline-container-orga0d12bf" class="outline-4">
+<h4 id="orga0d12bf">恒定应力情况</h4>
+<div class="outline-text-4" id="text-orga0d12bf">
+<p>
+简化模型中，弹簧在外力的作用下发生形变 \(\varepsilon_{e}=\sigma/E\)，黏性环节通过一阶导数引入时间的作用: \(d\varepsilon_{c} / dt = \sigma/\eta\)(\(\eta\)为黏性环节的黏性系数，为一个常数)，因此总形变：
+</p>
+\begin{equation}
+\varepsilon = \varepsilon_{e} + \varepsilon_{c} = \frac{\sigma}{E} + \frac{\sigma}{\eta}t
+\end{equation}
+
+<p>
+随着时间延长，在恒定应力的作用下材料的变形无限增长，因此我们要把注意力转向更符合实际的情况。
+</p>
+</div>
+</div>
+<div id="outline-container-org6ed9ff6" class="outline-4">
+<h4 id="org6ed9ff6">恒定应变情况（松弛行为）</h4>
+<div class="outline-text-4" id="text-org6ed9ff6">
+<p>
+假设模型的总形变突然被拉到 \(\varepsilon_{0}\)的位置并保持不变，在初始瞬间，黏性的蠕变行为无法提供任何形变支持，全部的形变都由弹簧提供，即初始条件: \(\varepsilon_{c}(0) = 0, \varepsilon_{e} (0)= \varepsilon_{0} , \sigma(0)= E \varepsilon_{0} \)
+</p>
+
+<p>
+任意时刻都有：
+</p>
+\begin{equation}
+\varepsilon_{0} = \varepsilon_{e}(t) + \varepsilon_{c}(t)
+\end{equation}
+
+<p>
+上式对时间进行求导可以化为
+</p>
+\begin{equation}
+\frac{\dot{\sigma}(t)}{E} + \frac{\sigma(t)}{\eta} =0 
+\end{equation}
+
+<p>
+这个简单的方程的解是
+</p>
+\begin{equation}
+\sigma(t) = E \varepsilon_{0} e^{ - \frac{E}{\eta} t }
+\end{equation}
+
+<p>
+对应的弹性变形和蠕变变形结果分别是
+</p>
+\begin{equation}
+\varepsilon_{e}(t)= \varepsilon_{0} e ^{- \frac{E}{\eta}t}
+\end{equation}
+\begin{equation}
+\varepsilon_{c} (t) = \varepsilon_{0} (1- e^{-\frac{E}{\eta}t})
+\end{equation}
+
+<p>
+不难发现，在恒定应变的情况下，起初全部的形变由弹性变形提供，随着时间推移，累积的蠕变变形增长，由于总形变不变，因此原本的弹性变形被渐渐取代，对应的，系统中的应力也逐渐减轻，这个过程也称为应力松弛。
+</p>
+
+<p>
+应力松弛为器件正常工作中累积的非弹性变形提供了解释思路：尽管器件正常工作时所受的应力并不大，在此应力下器件的应变应该全都是弹性的，但是只要给予一定的温度和时间，蠕变就能缓慢发生、累积，其导致的非弹性形变将逐步替代原本的弹性形变。
+</p>
+
+<p>
+我们可以看到，如果撤去外力或者施加的应变，上述简化模型中积累的蠕变应变将不会自发恢复、消失。尽管有些蠕变形变实际上是可以自发恢复的（例如在高分子材料中），但是在金属和陶瓷材料在所处温度超过50%熔点时发生的较大的蠕变应变只能产生很小的恢复，因此这个简化模型对我们来说是够用的。
+</p>
+
+<p>
+还有一些名词可能与上述概念相关，但看上去它们穿了不太一样的衣服：
+</p>
+<ol class="org-ol">
+<li>瞬态蠕变：在第一阶段中的蠕变变形（见图1），但理想情况下有时也认为是可恢复形变；</li>
+<li>稳态蠕变：在第二阶段中的蠕变变形（见图1），但是有时说的也是不可恢复的形变；</li>
+<li>黏弹性：指的是受力发生与时间有关的变形，卸载后变形可以自动恢复，例如上面所说的高分子材料中的蠕变；</li>
+<li>黏塑性(viscoplastic)：指的是受力发生与时间有关的变形，变形包括不可恢复的永久塑性组成，例如上面所说的金属中的蠕变。</li>
+</ol>
+
+<p>
+简单地了解这些名词的概念有助于阅读一些技术手册，例如工程本构模型或数值分析中，有时将蠕变与黏塑性变形等同（即视为一种率相关塑性行为）<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>，现在我们就不难理解脚注<sup><a id="fnr.2.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>中表达的含义了。
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orga0c5de7"></a>弹性环节的影响<br />
+<div class="outline-text-5" id="text-orga0c5de7">
+<p>
+在封装的焊接结构中，弹性有两部分来源：
+</p>
+<ol class="org-ol">
+<li>焊料自身的弹性</li>
+<li>上下结构提供的弹性：例如IC封装的引脚，键合线结构</li>
+</ol>
+
+<p>
+相对而言，焊料自身的弹性应该是非常小的。
+</p>
+
+<p>
+较大的弹性有益于短期内减轻蠕变所致的危害，这个过程可以通过公式(21)说明。如果给封装结构施加10%的恒定应变并保持不变，弹性不同的封装的蠕变应变与时间的关系如下图所示：弹性较好的结构有很小的E，其蠕变累积的速度更慢，也需要更长的时间才能将全部的应变以蠕变变形取代；弹性较差的结构有很大的E，其蠕变积累的速度很快，在很短的时间内10%的总应变就全部转化为蠕变变形。
+</p>
+
+<p>
+由于处于恒定应变情况，充分长的时间以后，蠕变形变所能积累的极限也是10%，因此最终所有结构将会达到相同的蠕变应变值。
+</p>
+
+<p>
+在恒定应变工况下，较好的弹性结构能够在轻易提供大量的弹性形变的同时确保内部应力较低(\(\sigma=E \varepsilon\)，其中\(E\)较小)，因此蠕变发生的速率相对较慢(\( \dot{ \varepsilon_{c}   }= \sigma/\eta  \))，因此在饱和前的相同时间内，弹性更好的结构蠕变形变更小。
+</p>
+
+
+<div id="org0ce0133" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig7.svg" alt="fig7.svg" class="org-svg" width="500px" />
+</p>
+<p><span class="figure-number">Figure 7: </span>不同弹性对蠕变过程的影响</p>
+</div>
+</div>
+</li>
+<li><a id="org902c57a"></a>黏性系数的含义<br />
+<div class="outline-text-5" id="text-org902c57a">
+<p>
+如果使用黏性环节模拟蠕变现象，结构的黏性系数 \(\eta\) 应该有清晰的物理意义。显然
+</p>
+\begin{equation}
+\eta = \frac{\sigma}   {  \dot{\varepsilon_{c}  }}
+\end{equation}
+<p>
+根据上一篇中的公式(8)可以写出 \(\eta\) 的复杂表达。
+</p>
+
+<p>
+实际中最简单也最受关注的情况是稳态蠕变阶段，此时蠕变速率达到稳定值，不再随时间变化，这里我们使用公式(9)，可以得到：
+</p>
+\begin{equation}
+\eta = \frac{1}{A\sigma^{n-1}} \exp{ \left(\frac{Q}{RT} \right) }
+\end{equation}
+
+<p>
+可以看到，即便不考虑时间和温度的影响，在稳态、恒温的近似情况下，得到的黏性系数仍然不是一个稳定的常数。在有些机理的驱动下，n可能取大于1的值，此时随应力增加蠕变速率剧烈增长，得到的黏性系数也会发生变化。
+</p>
+
+<p>
+在应力松弛的现象中，结构内部的应力不断变化，结合依赖于应力的黏性系数，可以发现我们需要求解一个非线性响应而不是原本的方程(18)，此时对(17)求导得到（恒温条件下不再写出温度项，即合并到\(A\)中）：
+</p>
+\begin{equation}
+\frac{\dot{\sigma}(t)}{E} + A [\sigma(t)]^{n}  =0 
+\end{equation}
+
+<p>
+无须求解也可以直观感觉到：在应变刚施加的开始时刻附近，蠕变积累的速度相当惊人，因为此时蠕变应变与所受的应力呈现指数倍关系，而在初试时刻结构的应力是最大的。
+</p>
+
+<p>
+在\(n>1\)的情况下，上式的解析解为（\(\sigma_{0}\)是初始应力）
+</p>
+\begin{equation}
+\sigma(t)  =  \frac{\sigma_{0}}{[{t A E(n-1) {\sigma_{0}}^{n-1} +1}]^{1/(n-1)}} 
+\end{equation}
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgc805449" class="outline-4">
+<h4 id="orgc805449">恒温恒应变工况</h4>
+<div class="outline-text-4" id="text-orgc805449">
+<p>
+针对温度循环的分析显示本质上这是一种恒应变老化工况，同时，根据简单的模型我们现在也可以描述蠕变现象随时间、应力的变化，只是没有考虑温度的影响。
+</p>
+
+<p>
+这些信息启发我们，可以在恒温条件下周期性地给焊料施加恒定应变从而模拟温度循环中连接处的老化过程，这个过程如下图所示。
+</p>
+
+
+<div id="orgf909b4b" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig8.svg" alt="fig8.svg" class="org-svg" width="500px" />
+</p>
+<p><span class="figure-number">Figure 8: </span>恒温条件下周期性恒定应变工况</p>
+</div>
+
+<p>
+在外部施加的应变的作用下，焊料会发生形变，并且会积累一些蠕变变形，这些变形使得焊料的长度偏离原本的自然位置。经过一段时间以后，系统会到达稳态：每个正应变半周期的末尾(\(t_{1}\))，焊料在\(x\)方向上的累积的非弹性形变都正好累积到固定的位置，这里假设为\(x_{p}\)；然后施加的应变反向，在负应变周期的末尾(\(t_{3}\))，焊料在该方向上又恰好被压缩到同一个位置，也就是\(-x_{n}\)。
+</p>
+
+<p>
+假定应变转换的过程很快(\(t_{1}-t_{2},t_{3}-t_{4}\))，在此期间发生的蠕变形变就可以忽略，也就是说\(t_{2}\)时虽然总应变已经被反向压缩，但是焊料本身长度依然位于\(x_{p}\)(与\(t_{1}\)时刻相同)，其余的部分\(- \frac{\Delta x}{2}\to x_{p}\)都有瞬时的弹性形变提供。
+</p>
+
+<p>
+由于正半周期和负半周期条件都是一致的，没有理由认为两者之间有差别，根据这种对称性应该有 \(x_{p}=x_{n}\)。
+</p>
+
+<p>
+因此此处只分析\(t_{2}\to t_{3}\)的过程。为了方便计算，选择反方向(图中\(x'\)方向)作为正方向，并且选择\(t'\)作为时间变量，\(t'\)以\(t_{2}\)时刻作为起始点。
+</p>
+
+<p>
+类似于(17)-(21)的分析，可以列出：
+</p>
+\begin{equation}
+\varepsilon_{e}(t') + \varepsilon_{c}(t') = \frac{\Delta x}{2}
+\end{equation}
+
+<p>
+求导。为了观察非线性条件下的过程，根据对黏性系数的认识，此处选择(24)中的蠕变速率定义，
+</p>
+\begin{equation}
+\frac{\dot{\sigma}(t')}{E} + A [\sigma(t')]^{n}  =0 
+\end{equation}
+
+<p>
+初始条件如下：
+</p>
+\begin{equation}
+\sigma(t'=0) = \left( \frac{\Delta x}{2} + {x_{p}} \right)E
+\end{equation}
+\begin{equation}
+\varepsilon _{c}(t'=0) = -x_{p}
+\end{equation}
+
+<p>
+(27)解的形式其实就是(25)，为了方便计算，选取\(A=1,n=2\)分析，也就是说 \(d {\varepsilon_{c}}/dt = \sigma^{2}\)，于是解可以写成
+</p>
+\begin{equation}
+\sigma(t') = \frac{\sigma (t'=0)}{E \sigma(t'=0)t+1}
+\end{equation}
+
+<p>
+我们只关心焊料中的非弹性形变（蠕变形变）。使用约束(26)，此时弹性形变可以直接写出，因此就可以简单求出任意时刻的蠕变形变
+</p>
+\begin{equation}
+\varepsilon_{c} (t') = \frac{\Delta x}{2}- \varepsilon_{e} (t') =  \frac{\Delta x}{2}- \frac{\sigma(t')}{E}
+\end{equation}
+
+<p>
+经过了半个周期(\(T_{s}\))以后到\(t_{3}\)时刻时，蠕变变形恰好累积到\(x_n\)的位置，即
+</p>
+\begin{equation}
+\varepsilon_{c} (T_{s})= x_{n} = x_{p} = \frac{\Delta x}{2}- \frac{\sigma(T_{s})}{E} =  \frac{\Delta x}{2}- \frac{\sigma (t'=0)}{E^{2}\sigma(t'=0)t+1}
+\end{equation}
+
+<p>
+实际中，我们关心的是蠕变应变的应变振幅，也就是\(x_{p}+x_{n}  =2x_{p}\)，将上面的式子同时乘以2，可以得到：
+</p>
+\begin{equation}
+2 x_{p }= \Delta x - \frac{ ( \Delta x +2x_{p}  )}{E^{2 } ( \frac{\Delta x}{2} +x_{p}  )T_{s} +1}
+\end{equation}
+
+<p>
+设振幅为 \(\Delta \varepsilon =2x_{p}\)，则
+</p>
+\begin{equation}
+\Delta \varepsilon_{}= \Delta x - \frac{ ( \Delta x + \Delta \varepsilon)}{0.5 E^{2 } ( \Delta x + \Delta \varepsilon )T_{s} +1}
+\end{equation}
+
+<p>
+取\(\Delta x =10\%\)，即恒定应变为参考长度的百分比数值；\(E\)根据材料弹性选取，为了观察其影响，我们选择0.01, 1, 100, 10000观察其对振幅的影响。将(34)转化为\(\Delta \varepsilon\)与\(T_{s}\)的二次函数式，可以得到两者的关系，其余变量均已经给定，绘制图像如下。
+</p>
+
+
+<div id="org04800f8" class="figure">
+<p><img src="./static/tikz/powerdevicereliability/fig9.svg" alt="fig9.svg" class="org-svg" width="500px" />
+</p>
+<p><span class="figure-number">Figure 9: </span>蠕变振幅与循环时间的关系</p>
+</div>
+
+<p>
+图9与图7十分相似，即便我们采用了非线性的模型来分析蠕变过程，但是结论依然可以总结如下：
+</p>
+<ol class="org-ol">
+<li>焊接结构在恒温条件下经历恒应变作用时（该工况与温度循环十分相似，只是没有温度变化），蠕变导致的非弹性形变振幅随着循环周期延长增加，但最终将达到饱和值；</li>
+<li>因此，对于特定的材料，此工况下其寿命在一定时间尺度内（较短的时间尺度）降低，到达另一时间范围时寿命缩短变慢，最终寿命将会趋近于一个下界；</li>
+<li>对于上述较短的较短时间尺度的循环工况，增加材料的弹性可以显著影响其蠕变应变的振幅，延长寿命；</li>
+<li>但是如果循环的周期很长（或者说频率很低），改变材料和结构的弹性对缩短应变振幅没有帮助，因此不会延长寿命。</li>
+</ol>
+
+<p>
+在施加的条件下，我们假定存在一种周期性反复拉压的非弹性形变模式，通过求解前面建立的解析模型（通常这个求解是通过仿真完成的），我们确实找到了这样的解。
+</p>
+
+<p>
+当结构在外力的作用下发生反复的、周期性的非弹性形变过程时，即便在单方向上都没有发生无限的非弹性形变（例如恒定应变约束），材料内部周期性的、有限的非弹性形变依然会造成失效，这个过程就是疲劳。
+</p>
+
+<p>
+看上去，由于温度循环和上述恒应变工况的相似性，焊接结构在温度循环中的失效似乎可以完全归因于这种周期性蠕变变形所引发的疲劳过程，并结合图9与图7的结果解释循环寿命与时间之间复杂的依赖关系。
+</p>
+
+<p>
+但事实并非如此，温度条件的缺失使得整个故事变得乐观：我们一直置之不理的温度其实会显著影响这个过程，我们将会结合文献中经典的结构再来完整地审视这个过程，并且看到几何结构和蠕变棘轮是如何作用的。
+</p>
+
+<p>
+不过，由于这里出现了疲劳过程，接下来需要先回顾一下疲劳相关的内容，然后再回来与时间有关的Part2。
+</p>
+
+<p>
+2026.3.11
+</p>
+
+
+<p>
+<details class="stream-entry-comments"><summary>💬 评论</summary><div class="stream-entry-comments-inner"><giscus-widget repo="tuiwo/blogdiscussion" repoid="R_kgDOP0EuWQ" category="General" categoryid="DIC_kwDOP0EuWc4Cvtd5" mapping="specific" term="reli-complextime-1" reactionsenabled="1" emitmetadata="0" inputposition="top" theme="preferred_color_scheme" lang="zh-CN" loading="lazy"></giscus-widget></div></details>
+</p>
+</div>
+</div>
+</div>
+</div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 我们将会回忆一下什么是应力，不过不是在这个小空白。
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+&#x2026; for longer cycles, the approximation is based on the assumption that viscoplastic deformation saturates for t&gt;60s. - AN2019-05
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+"In the literature, the terms viscoplasticity and creep are often used interchangeably to refer to the class of problems related to rate-dependent plasticity. A distinction is sometimes made so that creep refers to models without a yield surface." <a href="https://doc.comsol.com/6.3/doc/com.comsol.help.sme/sme_ug_theory.06.039.html#3443815">Comsol Note</a> 
 </p></div></div>
 
 
