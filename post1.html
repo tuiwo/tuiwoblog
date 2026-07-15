@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-12 Mon 23:59 -->
+<!-- 2026-07-15 Wed 22:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>梯度</title>
@@ -198,10 +198,14 @@
 <style>
 .content:has([value="all"]:checked) li{display: list-item;}
 
-.content:has([value="Learning"]:checked)
- li:has([data-tags~="#Learning"]){display: list-item;}
 .content:has([value="File"]:checked)
  li:has([data-tags~="#File"]){display: list-item;}
+.content:has([value="Learning"]:checked)
+ li:has([data-tags~="#Learning"]){display: list-item;}
+.content:has([value="Building"]:checked)
+ li:has([data-tags~="#Building"]){display: list-item;}
+.content:has([value="Reading"]:checked)
+ li:has([data-tags~="#Reading"]){display: list-item;}
 </style>
 <script>
   window.MathJax = {
@@ -251,7 +255,7 @@
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#org5bb9ab8">1. 空间中的直线方程</a></li>
-<li><a href="#org7f5d3a1">2. 二维情况的梯度 <a href="#citeproc_bib_item_1">[1]</a></a></li>
+<li><a href="#org85e66d9">2. 二维情况的梯度 <a href="#citeproc_bib_item_1">[1]</a></a></li>
 <li><a href="#references">3. References</a></li>
 </ul>
 </div>
@@ -316,8 +320,8 @@ z = z_0 +t \cos \gamma
 </p>
 </div>
 </div>
-<div id="outline-container-org7f5d3a1" class="outline-2">
-<h2 id="org7f5d3a1"><span class="section-number-2">2.</span> 二维情况的梯度 <a href="#citeproc_bib_item_1">[1]</a></h2>
+<div id="outline-container-org85e66d9" class="outline-2">
+<h2 id="org85e66d9"><span class="section-number-2">2.</span> 二维情况的梯度 <a href="#citeproc_bib_item_1">[1]</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 函数 \(f(x,y)\) 沿着 \(x,y\) 方向的变化率就是函数在这两个方向上的偏导数 \(f_x,f_y\) ，但是函数不止会沿着这两个方向变化，我们想知道当沿着 <b>别的方向</b> 函数的变化率有多快，也就是说，从当前点 \((x_0,y_0)\)沿着任意一个方向走一小步，函数值变化量有多少，这个量我们定义为这个方向上的 <b>方向导数</b> 。
