@@ -1147,6 +1147,70 @@ body.homepage .heatmap-tooltip {
   margin-top: 0.1rem;
 }
 
+/* 可选布局：Org 中使用 `#+STREAM_TOC: left` 时，导出器会添加
+   `.stream-toc-sidebar`，让 stream 目录复用普通文章的左侧悬浮样式。 */
+.stream-page.stream-toc-sidebar .stream-toc {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: inherit;
+}
+
+.stream-page.stream-toc-sidebar .stream-toc-label {
+  display: none;
+}
+
+.stream-page.stream-toc-sidebar #table-of-contents {
+  position: fixed;
+  top: 26rem;
+  left: auto;
+  width: 180px;
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: 0 0 0 -220px;
+  padding: 0 1.5rem 0 0;
+  border-radius: 0;
+  font-family: "Open Sans", "Noto Sans SC", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 100;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.stream-page.stream-toc-sidebar #table-of-contents a {
+  color: #1781B5;
+  border-bottom: 0;
+  opacity: 0.5;
+  transition: color 0.18s ease, opacity 0.18s ease;
+  font-weight: inherit;
+  letter-spacing: 0;
+}
+
+.stream-page.stream-toc-sidebar #table-of-contents a:hover {
+  color: #2b3a54;
+  border-bottom: 0;
+  opacity: 1;
+}
+
+.stream-page.stream-toc-sidebar #table-of-contents #text-table-of-contents > ul {
+  column-count: 1;
+  padding-left: 0;
+  margin: 0;
+}
+
+.stream-page.stream-toc-sidebar #table-of-contents li {
+  margin: 0.25em 0;
+}
+
+.stream-page.stream-toc-sidebar #table-of-contents ul ul,
+.stream-page.stream-toc-sidebar #table-of-contents ul ul ul,
+.stream-page.stream-toc-sidebar #table-of-contents ul ul ul ul {
+  padding-left: 0.6em;
+  margin-top: 0;
+}
+
 
 /* stream 每条记录标题下面的小字 meta 行 */
 .stream-page .stream-entry-meta {

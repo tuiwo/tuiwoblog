@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-15 Wed 14:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>无限的阅读</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel='stylesheet' href='style.css'/>
+                 <script src='sidenotes.js' defer></script>
+                 <script src='comments.js'></script>
+<script type="module" src="https://esm.sh/giscus"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<style>.home-link { margin: 1.5rem 0; font-size: 0.9em; color: #777; }
+.home-link a { color: #4273b8; text-decoration: none; }
+.home-link a:hover { text-decoration: none; text-shadow: 0 0 1px #000; }
+</style>
+<div class='home-link'><a href='index.html'>⌂</a></div>
+</div>
+<div id="content" class="content">
+<h1 class="title">无限的阅读</h1>
+<div class="stream-page stream-toc-sidebar">
+
+
+<nav class="stream-toc">
+<span class="stream-toc-label">Contents</span>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org935123a">无限的阅读</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div id="outline-container-org935123a" class="outline-2">
+<h2 id="org935123a">无限的阅读</h2>
+<div class="outline-text-2" id="text-org935123a">
+<p>
+我读过不少小说，在学生时代。单调的阅读食谱造就了我出色的遗忘力和胡言乱语的本领，因为无论是网络小说还是文学名著存在脑子里都是不小的负担，快速遗忘其实是通往下一个故事的钥匙。遗忘的速度如此之快以至于有时当我读某本书到结尾的时候才发现这本书之前看过。
+</p>
+
+<p>
+现在听起来有点笨，不过当时我的梦想是写小说。说实话我甚至觉得当年学生中至少得有1/4梦想是写小说，剩下的人可能想做数学家、老师和医生，别的似乎都很遥远（乃至不太知其存在），而学生每天都要和作家/数学家的精妙造物打交道，见得最多的是老师和医生。不过这都是我瞎猜的。
+</p>
+
+<p>
+习惯里面多少掺了点逃避，起初多少是为了逃避没有朋友的无聊，后面则是逃避上学的压力。小说的世界太甜美了，打发上课和睡前的时光再适合不过。但当初我单纯地相信我是出于纯粹的爱，我和我妈说：“我永远都会爱看小说的。”（必须得承认，这里说的其实是网络小说）我妈说长大了会变的。
+</p>
+
+<p>
+转变来得如此之快。一进入大学，好玩的实在是太多，无暇读书了。打游戏、看视频、玩手机，几乎不再看网络小说，偶尔从图书馆借几本书。其实也有幸福的发现，比如钱德勒、狄克森-卡尔。但是太多的事情挤占了大脑的阁楼空间，遗忘还在加速。漫画被从厕所请出去了，睡前不看甜品小说改看我完全不感兴趣的硬骨头，这玩意儿催眠，一本管半年。
+</p>
+
+<p>
+有时我意识到，看小说的习惯逐渐消失以后生活的空旷河床上显露出来了一些丑陋的石头和泥沟，很难说这些问题究竟是看小说遗留导致，还是源于天性。其实这些缺点不难发现，尤其是在大学生活中，巨大的自由意味着必然时常面对自我，娱乐环节的间隙闪烁意识到自己在拖延逃避，偶尔早睡却无法睡去的时候意识到中学和大学时代因为贪玩我几乎没有几晚良好睡眠，试图坚持小事却重复放弃。这当然不是我独有的问题。在空虚中的自我审视导致了大学时代共同的焦虑，我们逐渐在试图对抗焦虑的振奋和放弃行动的挫败中被煎至两面金黄。
+</p>
+
+<p>
+在整天不出宿舍、屏幕时间超过16小时、逃课率60%、大多数时间躺在床上打游戏的日子里不难意识到自己的堕落，为自己开脱则更简单。过去我的梦想是写作，看小说完全是正确的努力方向，我可以自信地把不受控制的阅读行为（明知有正事要做仍跑去看小说）归结为热爱。但现在这种想法完全站不住脚，所谓的热爱在更加诱人的娱乐活动面前如此经不住考验，使我不得不承认看小说只是一种强力且当时唯一可行的逃避手段，一旦有更愉快可行的娱乐方式，我也会深陷其中，因此拖延和惰性其实很可能是被热爱粉饰的本性。我也可以轻易接受另一种观点，即看小说（尤其是网络小说）会对人产生毒害。这种理由更加完美，现在变着花样地拖延既不是我的责任，不再爱看网络小说又成为了我的胜利。
+</p>
+
+<p>
+自我诊断的药方是改善自己的阅读食谱，“只要重新开始读正确的书，一切都会变好”。我开始看一些历史和哲学，零零散散地看了柏拉图的著作，有些很喜欢，有些则不然；欧洲史中国史世界史，很有趣，但看了就忘；哲学史是安眠药皇冠上面的明珠，无论是谁写的。我并非不读故事，当时不知从哪里看来的观点，按照时间顺序读不同文化的核心著作会更有所得（金克木在《书读完了》应该有类似的观点），于是我开始从头往后看，荷马史诗很精彩，后来看了罗念生周作人译的古希腊悲剧，武汉的夏天热得要命，有的一看就困，埃涅阿斯纪很喜欢&#x2026;后面颠三倒四地看，但其实没什么改观，我的阅读量持续下降。
+</p>
+
+<p>
+那个时候随便都能从知乎上面拉出一张包罗万象的正确书单，我一般会跳过那些看起来像在教人成功的书目和大部头的教材。有一年我打算读一些英语原著，最好简单一点，于是我先读了申辩篇的英译本（因为我已经读过中译）、几本童话书，然后读了Atomic Habits.不知道你是否听过这个笑话:末日来临大家聚在图书馆烧火取暖，最先应被烧掉的就是成功学书籍。我们天然鄙视教别人成功、教别人变好的书籍以及读这类书籍的功利俗人，这本书很可能会被归在此列，放在之前估计我会羞于去读，但我读过之后确实有两点收获。第一点是，无论令人不满的生活现状责任在于自己还是在别的因素，唯一重要的事是从现在开始使其变好，这是可以被直接探讨的话题，无须事先明确拖延逃避的惰性究竟是天性还是不良嗜好的后遗症；第二点是生活中遇到的大多数问题应该都有人直接地讨论过了，并给出了一些可行的策略，只是这些讨论可能藏在过去我羞于接触的书里。
+</p>
+
+<p>
+毫无章法地在原本的阅读计划的中间读了好几本类似主题的书，又过了很长时间我才意识到我正在使用书里面的方法解决问题。以前我在傍晚之前几乎不喝水，到了晚上渴到牛饮，因为我白天懒得走很远去专门接水。我尝试了两种策略：第一种是每次上厕所的时候都把水杯顺便放在茶水间，回来的时候接一杯水喝掉，这个方法奏效了，因为喝水让我更多地上厕所，而这又会让我顺路接水，我为自己应用书中的方法、构造了一个巧妙的正循环而沾沾自喜，不过这个方法还是有点考验我的记忆力；第二种方法简单到离谱，我稍微改变了环境，用一个超大号的吸管杯换掉了原本的茶杯，每天早上接咖啡的时候我都会把它灌满放在手边，突然之间我一上午就能喝800mL水。这种策略实在是太简洁了，有一段时间我痴迷于改造环境，例如在门后贴挂钩把钥匙和工牌挂在上面，以免出门忘拿，把手机和手表充电器放在进门的地方，让它们不要进入卧室；例如在工作和学习的桌子上放数百张拆封的白纸，确保阅读和计算的时候可以随时写写画画。接下来，我读了一些书来缓解我的睡眠问题，工作以后读了一些书了解管理和做事逻辑，有收入以后又读了一些投资、经济相关的书试图解决财务问题。
+</p>
+
+<p>
+我喜欢这种把书中的内容应用于解决生活中问题的感觉。我意识到在阅读哲学和历史的时候我就更喜欢探讨人该如何生活的部分，因为我觉察我生活中的问题、习性中的缺点先于阅读。我带着这些问题阅读，如果恰好这些问题得到回答，我会感到惊喜。
+</p>
+
+<p>
+带着焦虑、困惑和弱点我重塑了自己的阅读清单。唯一重要的就是承认自己庸俗，我尽量保证自己在功利地阅读：要么是因为纯粹喜爱一本书，享受阅读它的感觉，避免落入昏昏欲睡硬啃的情况，免得伤害我的热忱；要么我希望这些书能告诉我某个答案、某个策略、某种认知，至于它是什么类型、有什么标签、作者如何完全无关紧要，如有必要，畅销书、教材都可以读。
+</p>
+
+<p>
+现在我已经可以毫不避讳地告诉别人最近我打算读一下某一本“成功学”作品，因为它的某个观点被某本别的书提及过，或者告诉别人我对提升效率或者时间管理的书感兴趣。这都是细枝末节，对我来说最重要的是阅读前我带来的问题：我最近遇到什么困难，我对哪些现象感兴趣，我想做什么。重中之重的是生活本身，它位于蜘蛛盘踞的中心，生活中无数的问题如同蛛丝向四周延伸，连接到某本书的某个观念、某种现象，构成了阅读行为的整张蛛网，这就是今天我的阅读观。
+</p>
+
+<p>
+如果一个幸运的且纯粹的读者只关心某个高尚的问题，他完全可以给自己拟定一份高尚的书单；但一个人如果像我这样不幸，不幸经常受到拖延和失眠的袭扰、不幸在学习的时候感到力不从心因而关心如何学习、不幸在工作中希望不工作，或者像我这样庸俗，庸俗到渴望一些成就、庸俗到需要考虑金钱的因素，那他的书单完全可以杂乱一点，列满有可能回答这些疑问和渴求的畅销书、成功学、经典作品或者教科书。只要能解决问题，庸俗和阅读可以是自洽且愉快的。对于羞于承认自己庸俗的读者（我曾是）和自认庸俗却从不阅读的人（我见过很多）来说，一切本可以变得更好。最危险的事情莫过于，有些庸俗的问题可能会花费我三十年（例如健康和工作），我却拒绝花三年看一些乱七八糟的书和文章来缓解这些问题。
+</p>
+
+<p>
+阅读是无尽的，按照我以前的读法，我永远也读不到当代。人工智能引发了信息大爆炸，我们每天都容易感觉到信息过载，但这并不是第一次信息爆炸，互联网已经有几十年历史，印刷术引发的爆炸则已经持续了数百年，在无数领域的每一个细枝中都产生了狂暴的余波：新的发现、新的理解、旧的发现、旧的整理每年都会产生无数篇文章、无数本书。即便LLM以今天这样的速度输入和输出，也许还需要好几年才能竭尽过去积累的智慧，同时它又在不断生成新的结果，加速新文章、新思路、新书的出现。另一方面，生活也会源源不断地提问，有些花不了一分钟，有些却会持续数年，问题一个接一个没有尽头，除非生命结束；追寻这些问题的答案注定也是没有尽头的。从无穷的问题中取有限的问题求索，决定了我看到的世界是怎么样的（还记得那个视频吗，如果专注于传球的次数，你很可能会看不见有一只大猩猩从画面中路过）。
+</p>
+
+<p>
+现在我的阅读方式就像是有目标的杂食动物，随时记录我的问题和疑惑，然后从这份没有尽头的问题清单里面选择几条最近对我来说最要紧的，让AI翻遍我的电脑、我的收藏和整个整个网络，给我一份与此相关的书单和文章列表，我没有规划地看，尝试材料里面的方法是否能改造我的生活。按照这种PP原则行事，即问题(Problem)-实践(Practice)原则，极大地缓解了我的焦虑。我决定写这样一个没有尽头的帖子，随时把我想到的问题、找到的方法、实践的收获写出来，它的名字就叫“无尽的阅读”，尽管这里面的问题可能无聊透顶，不过坦白来讲这就是面对自我的过程，至少我又开始感受到阅读的快乐了。
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+<details class="stream-entry-comments"><summary>💬 评论</summary><div class="stream-entry-comments-inner"><giscus-widget repo="tuiwo/blogdiscussion" repoid="R_kgDOP0EuWQ" category="General" categoryid="DIC_kwDOP0EuWc4Cvtd5" mapping="specific" term="inf-reading" reactionsenabled="1" emitmetadata="0" inputposition="top" theme="preferred_color_scheme" lang="zh-CN" loading="lazy"></giscus-widget></div></details>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id='postamble' class='status'>
+  <div class='postamble-meta'>
+  <p class="author">Author: tuiwo</p>
+  <p class="email">Email: fhywork@foxmail.com</p>
+  <p class="date">Date: 2026-07-13</p>
+  <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.11)</p>
+  </div>
+  <div class="postamble-comments">
+    <script src="https://giscus.app/client.js"
+            data-repo="tuiwo/blogdiscussion"
+            data-repo-id="R_kgDOP0EuWQ"
+            data-category="General"
+            data-category-id="DIC_kwDOP0EuWc4Cvtd5"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang="zh-CN"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+</div>
+</div>
+</body>
+</html>
