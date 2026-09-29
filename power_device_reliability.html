@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-15 Wed 14:10 -->
+<!-- 2026-09-09 Wed 23:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>功率器件封装可靠性</title>
@@ -248,39 +248,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org13bf5b8">蠕变：与时间有关的行为</a>
+<li><a href="#org967a327">蠕变：与时间有关的行为</a>
 <ul>
-<li><a href="#org94fe240">简介</a></li>
-<li><a href="#org0a31b51">蠕变试验现象</a></li>
-<li><a href="#orge661d48">蠕变的物理机制</a>
+<li><a href="#org314d895">1. 简介</a></li>
+<li><a href="#org64058b8">2. 蠕变试验现象</a></li>
+<li><a href="#orgf73a2c0">3. 蠕变的物理机制</a>
 <ul>
-<li><a href="#orga52f020">扩散流动</a></li>
-<li><a href="#orgc156f9b">位错蠕变</a></li>
-<li><a href="#org8ceedec">机制总结 扩散 Arrhenius方程</a></li>
+<li><a href="#orgb6c7f05">3.1. 扩散流动</a></li>
+<li><a href="#orgac916f4">3.2. 位错蠕变</a></li>
+<li><a href="#org7e9652d">3.3. 机制总结 扩散 Arrhenius方程</a></li>
 </ul>
 </li>
-<li><a href="#orge71b346">蠕变模型</a>
+<li><a href="#orgea85d91">4. 蠕变模型</a>
 <ul>
-<li><a href="#org41fa48d">模型表达式</a></li>
-<li><a href="#orgd7d18d9">稳态蠕变模型</a></li>
+<li><a href="#org5e62173">4.1. 模型表达式</a></li>
+<li><a href="#org38e28a9">4.2. 稳态蠕变模型</a></li>
 </ul>
 </li>
-<li><a href="#org437e58d">蠕变的寿命估算：时间-温度参数</a>
+<li><a href="#org5d87ef9">5. 蠕变的寿命估算：时间-温度参数</a>
 <ul>
-<li><a href="#org37fc48c">Sherby-Dorn参数法</a></li>
+<li><a href="#orgf8643b9">5.1. Sherby-Dorn参数法</a></li>
 </ul>
 </li>
-<li><a href="#org4d779bb">小结</a></li>
+<li><a href="#org9a5c5d5">6. 小结</a></li>
 </ul>
 </li>
-<li><a href="#org359f315">复杂的时间 Part 1</a>
+<li><a href="#org6fd1b3e">复杂的时间 Part 1</a>
 <ul>
-<li><a href="#org2a56141">等温热循环与饱和现象</a></li>
-<li><a href="#org67d5219">蠕变变形模型与松弛行为</a>
+<li><a href="#org876aa9c">1. 等温热循环与饱和现象</a></li>
+<li><a href="#org05ad0b8">2. 蠕变变形模型与松弛行为</a>
 <ul>
-<li><a href="#orga0d12bf">恒定应力情况</a></li>
-<li><a href="#org6ed9ff6">恒定应变情况（松弛行为）</a></li>
-<li><a href="#orgc805449">恒温恒应变工况</a></li>
+<li><a href="#orgab1d903">2.1. 恒定应力情况</a></li>
+<li><a href="#orge3431a6">2.2. 恒定应变情况（松弛行为）</a></li>
+<li><a href="#org10e04e9">2.3. 恒温恒应变工况</a></li>
 </ul>
 </li>
 </ul>
@@ -289,9 +289,9 @@
 </div>
 </div>
 </nav>
-<div id="outline-container-org13bf5b8" class="outline-2">
-<h2 id="org13bf5b8">蠕变：与时间有关的行为</h2>
-<div class="outline-text-2" id="text-org13bf5b8">
+<div id="outline-container-org967a327" class="outline-2">
+<h2 id="org967a327">蠕变：与时间有关的行为</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 <div class="stream-entry-meta">2026-02-02 | 功率器件,可靠性,蠕变</div>
 </p>
@@ -312,9 +312,9 @@
 所以我决定零零散散地做一些阅读、整理和调研，尽量从基础机理的层面把这些问题整理个大概（也只是个大概，正如前面所说，在这些领域我不是专业的），免得像以前一样只是照本宣科地在电力电子领域背诵别人的只言片语。可以视这些内容为我的学习笔记。
 </p>
 </div>
-<div id="outline-container-org94fe240" class="outline-3">
-<h3 id="org94fe240">简介</h3>
-<div class="outline-text-3" id="text-org94fe240">
+<div id="outline-container-org314d895" class="outline-3">
+<h3 id="org314d895"><span class="section-number-3">1.</span> 简介</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
 实际中，硬件周期性地加热和冷却会产生应力<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>，这些应力引将疲劳(fatigue)和蠕变(creep)耦合在一起，影响了器件封装中关键结构的寿命。对功率器件封装而言，以下几个焊接界面是最关键的结构：芯片表面的键合线结构、芯片底面的焊料结构、DBC与基板(baseplate)的焊料结构。
 </p>
@@ -328,9 +328,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org0a31b51" class="outline-3">
-<h3 id="org0a31b51">蠕变试验现象</h3>
-<div class="outline-text-3" id="text-org0a31b51">
+<div id="outline-container-org64058b8" class="outline-3">
+<h3 id="org64058b8"><span class="section-number-3">2.</span> 蠕变试验现象</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 典型的蠕变测试是在恒温、恒定外力情况下测量样品随时间变化的变形，如下图1所示。在此过程中，最重要的特性是应变积累的速率 \(\dot{\varepsilon} = \frac{d \varepsilon}{dt}\).
 </p>
@@ -343,7 +343,7 @@
 </ul>
 
 
-<div id="org4b99bd0" class="figure">
+<div id="org73ab79d" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig1.svg" alt="fig1.svg" class="org-svg" width="500px" />
 </p>
 <p><span class="figure-number">Figure 1: </span>恒定载荷下蠕变随时间的发展</p>
@@ -359,20 +359,20 @@
 </ol>
 </div>
 </div>
-<div id="outline-container-orge661d48" class="outline-3">
-<h3 id="orge661d48">蠕变的物理机制</h3>
-<div class="outline-text-3" id="text-orge661d48">
+<div id="outline-container-orgf73a2c0" class="outline-3">
+<h3 id="orgf73a2c0"><span class="section-number-3">3.</span> 蠕变的物理机制</h3>
+<div class="outline-text-3" id="text-1-3">
 <p>
 我们应该稍微了解一下金属、合金这样的晶体材料蠕变的物理机制。蠕变涉及的复杂物理机制总体上可以分为两大类：扩散流动和位错蠕变。
 </p>
 </div>
-<div id="outline-container-orga52f020" class="outline-4">
-<h4 id="orga52f020">扩散流动</h4>
-<div class="outline-text-4" id="text-orga52f020">
+<div id="outline-container-orgb6c7f05" class="outline-4">
+<h4 id="orgb6c7f05"><span class="section-number-4">3.1.</span> 扩散流动</h4>
+<div class="outline-text-4" id="text-1-3-1">
 </div>
-<ul class="org-ul">
-<li><a id="orgc286440"></a>晶体中的空位缺陷<br />
-<div class="outline-text-5" id="text-orgc286440">
+<div id="outline-container-org54eac9c" class="outline-5">
+<h5 id="org54eac9c"><span class="section-number-5">3.1.1.</span> 晶体中的空位缺陷</h5>
+<div class="outline-text-5" id="text-1-3-1-1">
 <ul class="org-ul">
 <li>固体材料可以根据原子或离子间排列的功率进行分类：
 <ul class="org-ul">
@@ -395,29 +395,29 @@
 </ul>
 
 
-<div id="org61513a0" class="figure">
+<div id="org99f6dba" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig2.svg" alt="fig2.svg" class="org-svg" width="300px" />
 </p>
 <p><span class="figure-number">Figure 2: </span>晶体中的空位缺陷</p>
 </div>
 </div>
-</li>
-<li><a id="org7e1c325"></a>空位扩散<br />
-<div class="outline-text-5" id="text-org7e1c325">
+</div>
+<div id="outline-container-orgb63f085" class="outline-5">
+<h5 id="orgb63f085"><span class="section-number-5">3.1.2.</span> 空位扩散</h5>
+<div class="outline-text-5" id="text-1-3-1-2">
 <p>
 当晶体承受应力时，空位更容易在与应力方向垂直的晶界附近自发形成，导致此处空位浓度较高，从而引发空位从高浓度区域向低浓度区域扩散，最终导致晶粒形状发生变化，引发蠕变变形。
 </p>
 </div>
-</li>
-</ul>
 </div>
-<div id="outline-container-orgc156f9b" class="outline-4">
-<h4 id="orgc156f9b">位错蠕变</h4>
-<div class="outline-text-4" id="text-orgc156f9b">
 </div>
-<ul class="org-ul">
-<li><a id="org3062eef"></a>晶体中的线缺陷：位错<br />
-<div class="outline-text-5" id="text-org3062eef">
+<div id="outline-container-orgac916f4" class="outline-4">
+<h4 id="orgac916f4"><span class="section-number-4">3.2.</span> 位错蠕变</h4>
+<div class="outline-text-4" id="text-1-3-2">
+</div>
+<div id="outline-container-org4b651ce" class="outline-5">
+<h5 id="org4b651ce"><span class="section-number-5">3.2.1.</span> 晶体中的线缺陷：位错</h5>
+<div class="outline-text-5" id="text-1-3-2-1">
 <p>
 位错指的是晶体内存在线状错排，包括刃型位错和螺型位错。我们在这里只展示刃型位错来获得一些简单直观的理解。
 </p>
@@ -427,15 +427,16 @@
 </p>
 
 
-<div id="org1464964" class="figure">
+<div id="org1b454a0" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig3.svg" alt="fig3.svg" class="org-svg" width="200px" />
 </p>
 <p><span class="figure-number">Figure 3: </span>刃型位错缺陷</p>
 </div>
 </div>
-</li>
-<li><a id="org6ca10f5"></a>位错移动和塑性变形<br />
-<div class="outline-text-5" id="text-org6ca10f5">
+</div>
+<div id="outline-container-org489efeb" class="outline-5">
+<h5 id="org489efeb"><span class="section-number-5">3.2.2.</span> 位错移动和塑性变形</h5>
+<div class="outline-text-5" id="text-1-3-2-2">
 <p>
 塑性变形和大量的位错运动有关。当晶体承受 <b>切应力</b> 的时候，位错会发生滑移(slip)，每次只移动一个原子间距，最终这个终止的面会移动到晶体的表面，形成一个台阶，这个过程如下图所示。位错滑移所在的平面称为滑移面。
 </p>
@@ -445,25 +446,25 @@
 </p>
 
 
-<div id="orgcee7b8c" class="figure">
+<div id="org44669a2" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig4.svg" alt="fig4.svg" class="org-svg" width="500px" />
 </p>
 <p><span class="figure-number">Figure 4: </span>位错滑移与滑移台阶</p>
 </div>
 </div>
-</li>
-<li><a id="org05e6bcf"></a>位错蠕变(也称为幂律蠕变)<br />
-<div class="outline-text-5" id="text-org05e6bcf">
+</div>
+<div id="outline-container-org4cb716b" class="outline-5">
+<h5 id="org4cb716b"><span class="section-number-5">3.2.3.</span> 位错蠕变(也称为幂律蠕变)</h5>
+<div class="outline-text-5" id="text-1-3-2-3">
 <p>
 一种用来解释蠕变的位错移动机制还位错攀移。当位错的滑移面上存在障碍时，位错无法继续滑移；此时如果想要继续变形位错就只能离开原本的滑移面，迁移到相邻的平面，这个过程称为攀移。这种位错攀移需要结合空位缺陷扩散的方式，因此这种蠕变的过程似乎是受到扩散控制的。此外，这种攀移过程也是和时间相关的。
 </p>
 </div>
-</li>
-</ul>
 </div>
-<div id="outline-container-org8ceedec" class="outline-4">
-<h4 id="org8ceedec">机制总结 扩散 Arrhenius方程</h4>
-<div class="outline-text-4" id="text-org8ceedec">
+</div>
+<div id="outline-container-org7e9652d" class="outline-4">
+<h4 id="org7e9652d"><span class="section-number-4">3.3.</span> 机制总结 扩散 Arrhenius方程</h4>
+<div class="outline-text-4" id="text-1-3-3">
 <p>
 通过对蠕变物理机制简单的了解，可以发现蠕变与扩散过程(两种机理都涉及空位的扩散)相关。
 </p>
@@ -476,9 +477,9 @@
 <li>原子得有足够的能量解除原本位置的束缚并完成移动，即有能量</li>
 </ol>
 </div>
-<ul class="org-ul">
-<li><a id="org62b3964"></a>扩散发生有多快：传质速率(Rate of mass transfer)<br />
-<div class="outline-text-5" id="text-org62b3964">
+<div id="outline-container-org07d67ad" class="outline-5">
+<h5 id="org07d67ad"><span class="section-number-5">3.3.1.</span> 扩散发生有多快：传质速率(Rate of mass transfer)</h5>
+<div class="outline-text-5" id="text-1-3-3-1">
 <p>
 通常用扩散通量(diffusion flux, \(J\))衡量扩散发生的速率，即传质速率。
 </p>
@@ -505,9 +506,10 @@ J= \frac{M}{At}
 显然扩散通量之于物质输运，就如同电流密度之于电荷移动：当电流密度很大的时候，说明电子正在进行快速运动。
 </p>
 </div>
-</li>
-<li><a id="org6083670"></a>扩散系数(diffusion coefficient)<br />
-<div class="outline-text-5" id="text-org6083670">
+</div>
+<div id="outline-container-org487dcfd" class="outline-5">
+<h5 id="org487dcfd"><span class="section-number-5">3.3.2.</span> 扩散系数(diffusion coefficient)</h5>
+<div class="outline-text-5" id="text-1-3-3-2">
 <p>
 使用电流来类比物质输运是非常自然的，在半导体物理里面是顺理成章的推导，在这里我们将也能获得一些直觉结果。
 </p>
@@ -551,9 +553,10 @@ I = \frac{1}{R}V = GV
 <li>\(D\)较小意味着扩散的“电导比较小”，或者说“电阻”比较大，扩散较难进行。</li>
 </ul>
 </div>
-</li>
-<li><a id="org5b92ebd"></a>Arrhenius关系<br />
-<div class="outline-text-5" id="text-org5b92ebd">
+</div>
+<div id="outline-container-org79e4a45" class="outline-5">
+<h5 id="org79e4a45"><span class="section-number-5">3.3.3.</span> Arrhenius关系</h5>
+<div class="outline-text-5" id="text-1-3-3-3">
 <p>
 前面提到过，扩散发生的必然要求之一是有能量，即原子能量水平影响了扩散的难易程度，现在我们可以建立能量和扩散系数之间的关系：
 </p>
@@ -598,13 +601,12 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 所以接下来有必要从蠕变物理机理涉及的因素出发刻画蠕变变性的数学形式。
 </p>
 </div>
-</li>
-</ul>
 </div>
 </div>
-<div id="outline-container-orge71b346" class="outline-3">
-<h3 id="orge71b346">蠕变模型</h3>
-<div class="outline-text-3" id="text-orge71b346">
+</div>
+<div id="outline-container-orgea85d91" class="outline-3">
+<h3 id="orgea85d91"><span class="section-number-3">4.</span> 蠕变模型</h3>
+<div class="outline-text-3" id="text-1-4">
 <p>
 蠕变的物理机制揭示了几个重要的影响因素：
 </p>
@@ -624,9 +626,9 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 <li>电子封装中的陶瓷基板熔点在2000摄氏度以上，因此常规使用不会蠕变。</li>
 </ol>
 </div>
-<div id="outline-container-org41fa48d" class="outline-4">
-<h4 id="org41fa48d">模型表达式</h4>
-<div class="outline-text-4" id="text-org41fa48d">
+<div id="outline-container-org5e62173" class="outline-4">
+<h4 id="org5e62173"><span class="section-number-4">4.1.</span> 模型表达式</h4>
+<div class="outline-text-4" id="text-1-4-1">
 <p>
 时间 \(t\)、温度 \(T\)、应力 \(\sigma\)对蠕变应变 \(\varepsilon\)的影响可以通过下面的表达式描述：
 </p>
@@ -644,12 +646,13 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 
 <col  class="org-left" />
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="org-left">Name</td>
-<td class="org-left">\(f(\sigma)\)</td>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">\(f(\sigma)\)</th>
 </tr>
-
+</thead>
+<tbody>
 <tr>
 <td class="org-left">Norton</td>
 <td class="org-left">\(A \sigma^n\)</td>
@@ -683,12 +686,13 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 
 <col  class="org-left" />
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="org-left">Stage</td>
-<td class="org-left">\(g(t)\)</td>
+<th scope="col" class="org-left">Stage</th>
+<th scope="col" class="org-left">\(g(t)\)</th>
 </tr>
-
+</thead>
+<tbody>
 <tr>
 <td class="org-left">primary creep</td>
 <td class="org-left">\(1+et^{1/3}  \)</td>
@@ -714,9 +718,9 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 \end{equation}
 </div>
 </div>
-<div id="outline-container-orgd7d18d9" class="outline-4">
-<h4 id="orgd7d18d9">稳态蠕变模型</h4>
-<div class="outline-text-4" id="text-orgd7d18d9">
+<div id="outline-container-org38e28a9" class="outline-4">
+<h4 id="org38e28a9"><span class="section-number-4">4.2.</span> 稳态蠕变模型</h4>
+<div class="outline-text-4" id="text-1-4-2">
 <p>
 第二阶段蠕变有较好的特性：
 </p>
@@ -757,14 +761,15 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 
 <col  class="org-left" />
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="org-left">物理机制</td>
-<td class="org-left">\(n\)</td>
-<td class="org-right">\(q\)</td>
-<td class="org-left">描述</td>
+<th scope="col" class="org-left">物理机制</th>
+<th scope="col" class="org-left">\(n\)</th>
+<th scope="col" class="org-right">\(q\)</th>
+<th scope="col" class="org-left">描述</th>
 </tr>
-
+</thead>
+<tbody>
 <tr>
 <td class="org-left">扩散流动(Nabarro-Herring/Coble蠕变)</td>
 <td class="org-left">1</td>
@@ -785,9 +790,9 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 基于蠕变发生时内部物理机理的复杂性（如上表展示），可以预期公式(10)无法覆盖所有应力水平和温度下的蠕变变形。
 </p>
 </div>
-<ul class="org-ul">
-<li><a id="orga0e50a7"></a>常用的焊料稳态蠕变模型<br />
-<div class="outline-text-6" id="text-orga0e50a7">
+<div id="outline-container-org8e189b2" class="outline-5">
+<h5 id="org8e189b2"><span class="section-number-5">4.2.1.</span> 常用的焊料稳态蠕变模型</h5>
+<div class="outline-text-5" id="text-1-4-2-1">
 <p>
 例如在焊料的蠕变模型中，往往需要求助比公式(10)更复杂的形式：
 </p>
@@ -798,13 +803,12 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 其中， \(C,a,n\)是常数， \(G\)是剪切模量。
 </p>
 </div>
-</li>
-</ul>
 </div>
 </div>
-<div id="outline-container-org437e58d" class="outline-3">
-<h3 id="org437e58d">蠕变的寿命估算：时间-温度参数</h3>
-<div class="outline-text-3" id="text-org437e58d">
+</div>
+<div id="outline-container-org5d87ef9" class="outline-3">
+<h3 id="org5d87ef9"><span class="section-number-3">5.</span> 蠕变的寿命估算：时间-温度参数</h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 针对单纯的、恒定应力下的蠕变现象我们最后的一个问题是应该如何评估其寿命。
 </p>
@@ -847,9 +851,9 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 上述的外推方法在实际中效果不太好，为此需要引入一些观察、假设形成一些相对折中但也更成功方法，例如Sherby-Dorn参数法和Larson-Miller参数法，这些方法都涉及到时间-温度参数的使用。
 </p>
 </div>
-<div id="outline-container-org37fc48c" class="outline-4">
-<h4 id="org37fc48c">Sherby-Dorn参数法</h4>
-<div class="outline-text-4" id="text-org37fc48c">
+<div id="outline-container-orgf8643b9" class="outline-4">
+<h4 id="orgf8643b9"><span class="section-number-4">5.1.</span> Sherby-Dorn参数法</h4>
+<div class="outline-text-4" id="text-1-5-1">
 <ul class="org-ul">
 <li>Sherby-Dorn参数法的关键假设是激活能\(Q\)是个常数；</li>
 <li>在此基础上，我们可以很简单地改变温度得到激活能，然后只需要解决\(n\)的问题就可以了；</li>
@@ -862,9 +866,9 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 </div>
 </div>
 </div>
-<div id="outline-container-org4d779bb" class="outline-3">
-<h3 id="org4d779bb">小结</h3>
-<div class="outline-text-3" id="text-org4d779bb">
+<div id="outline-container-org9a5c5d5" class="outline-3">
+<h3 id="org9a5c5d5"><span class="section-number-3">6.</span> 小结</h3>
+<div class="outline-text-3" id="text-1-6">
 <p>
 到这里关于单纯蠕变的基本情况差不多理清了，感觉有不少收获。不过那些真正复杂的问题还没有提及，例如变化应力下的蠕变、应力松弛等，等把疲劳整理以后再来看这些问题会更加合适。
 </p>
@@ -876,9 +880,9 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 </div>
 </div>
 </div>
-<div id="outline-container-org359f315" class="outline-2">
-<h2 id="org359f315">复杂的时间 Part 1</h2>
-<div class="outline-text-2" id="text-org359f315">
+<div id="outline-container-org6fd1b3e" class="outline-2">
+<h2 id="org6fd1b3e">复杂的时间 Part 1</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 <div class="stream-entry-meta">2026-02-13 | 功率器件,可靠性,蠕变</div>
 </p>
@@ -914,9 +918,9 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 关键是为什么？
 </p>
 </div>
-<div id="outline-container-org2a56141" class="outline-3">
-<h3 id="org2a56141">等温热循环与饱和现象</h3>
-<div class="outline-text-3" id="text-org2a56141">
+<div id="outline-container-org876aa9c" class="outline-3">
+<h3 id="org876aa9c"><span class="section-number-3">1.</span> 等温热循环与饱和现象</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
 通过前面对蠕变的介绍，我们容易产生一种错误的印象：既然在恒定应力的情况下，蠕变导致的形变会随着时间不断积累，那么无限延长循环时间将会导致一个热循环就可以摧毁连接处。
 </p>
@@ -926,7 +930,7 @@ D=D_0 \exp \left( - \frac{Q_d}{RT} \right)
 </p>
 
 
-<div id="orgce810a7" class="figure">
+<div id="orga22d673" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig5.svg" alt="fig5.svg" class="org-svg" width="500px" />
 </p>
 <p><span class="figure-number">Figure 5: </span>热循环中焊接结构的变形</p>
@@ -974,23 +978,23 @@ L_{min}= L(\alpha _{s} - \alpha _{c} ) (T_{min}-T_{0})
 </p>
 </div>
 </div>
-<div id="outline-container-org67d5219" class="outline-3">
-<h3 id="org67d5219">蠕变变形模型与松弛行为</h3>
-<div class="outline-text-3" id="text-org67d5219">
+<div id="outline-container-org05ad0b8" class="outline-3">
+<h3 id="org05ad0b8"><span class="section-number-3">2.</span> 蠕变变形模型与松弛行为</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
 为了直观地展示影响焊接结构寿命的、与时间有关的过程，首先利用最简单的模型进行一些数学描述，这个模型使用一个弹簧模拟材料中的弹性变形，使用一个黏性环节模拟材料中与时间有关的变形，如下图所示。
 </p>
 
 
-<div id="org336d540" class="figure">
+<div id="org552f39e" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig6.svg" alt="fig6.svg" class="org-svg" width="300px" />
 </p>
 <p><span class="figure-number">Figure 6: </span>蠕变的最简模型</p>
 </div>
 </div>
-<div id="outline-container-orga0d12bf" class="outline-4">
-<h4 id="orga0d12bf">恒定应力情况</h4>
-<div class="outline-text-4" id="text-orga0d12bf">
+<div id="outline-container-orgab1d903" class="outline-4">
+<h4 id="orgab1d903"><span class="section-number-4">2.1.</span> 恒定应力情况</h4>
+<div class="outline-text-4" id="text-2-2-1">
 <p>
 简化模型中，弹簧在外力的作用下发生形变 \(\varepsilon_{e}=\sigma/E\)，黏性环节通过一阶导数引入时间的作用: \(d\varepsilon_{c} / dt = \sigma/\eta\)(\(\eta\)为黏性环节的黏性系数，为一个常数)，因此总形变：
 </p>
@@ -1003,9 +1007,9 @@ L_{min}= L(\alpha _{s} - \alpha _{c} ) (T_{min}-T_{0})
 </p>
 </div>
 </div>
-<div id="outline-container-org6ed9ff6" class="outline-4">
-<h4 id="org6ed9ff6">恒定应变情况（松弛行为）</h4>
-<div class="outline-text-4" id="text-org6ed9ff6">
+<div id="outline-container-orge3431a6" class="outline-4">
+<h4 id="orge3431a6"><span class="section-number-4">2.2.</span> 恒定应变情况（松弛行为）</h4>
+<div class="outline-text-4" id="text-2-2-2">
 <p>
 假设模型的总形变突然被拉到 \(\varepsilon_{0}\)的位置并保持不变，在初始瞬间，黏性的蠕变行为无法提供任何形变支持，全部的形变都由弹簧提供，即初始条件: \(\varepsilon_{c}(0) = 0, \varepsilon_{e} (0)= \varepsilon_{0} , \sigma(0)= E \varepsilon_{0} \)
 </p>
@@ -1067,9 +1071,9 @@ L_{min}= L(\alpha _{s} - \alpha _{c} ) (T_{min}-T_{0})
 简单地了解这些名词的概念有助于阅读一些技术手册，例如工程本构模型或数值分析中，有时将蠕变与黏塑性变形等同（即视为一种率相关塑性行为）<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>，现在我们就不难理解脚注<sup><a id="fnr.2.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>中表达的含义了。
 </p>
 </div>
-<ul class="org-ul">
-<li><a id="orga0c5de7"></a>弹性环节的影响<br />
-<div class="outline-text-5" id="text-orga0c5de7">
+<div id="outline-container-orgaf19101" class="outline-5">
+<h5 id="orgaf19101"><span class="section-number-5">2.2.1.</span> 弹性环节的影响</h5>
+<div class="outline-text-5" id="text-2-2-2-1">
 <p>
 在封装的焊接结构中，弹性有两部分来源：
 </p>
@@ -1095,15 +1099,16 @@ L_{min}= L(\alpha _{s} - \alpha _{c} ) (T_{min}-T_{0})
 </p>
 
 
-<div id="org0ce0133" class="figure">
+<div id="orgaedc89e" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig7.svg" alt="fig7.svg" class="org-svg" width="500px" />
 </p>
 <p><span class="figure-number">Figure 7: </span>不同弹性对蠕变过程的影响</p>
 </div>
 </div>
-</li>
-<li><a id="org902c57a"></a>黏性系数的含义<br />
-<div class="outline-text-5" id="text-org902c57a">
+</div>
+<div id="outline-container-org0044c19" class="outline-5">
+<h5 id="org0044c19"><span class="section-number-5">2.2.2.</span> 黏性系数的含义</h5>
+<div class="outline-text-5" id="text-2-2-2-2">
 <p>
 如果使用黏性环节模拟蠕变现象，结构的黏性系数 \(\eta\) 应该有清晰的物理意义。显然
 </p>
@@ -1143,12 +1148,11 @@ L_{min}= L(\alpha _{s} - \alpha _{c} ) (T_{min}-T_{0})
 \sigma(t)  =  \frac{\sigma_{0}}{[{t A E(n-1) {\sigma_{0}}^{n-1} +1}]^{1/(n-1)}} 
 \end{equation}
 </div>
-</li>
-</ul>
 </div>
-<div id="outline-container-orgc805449" class="outline-4">
-<h4 id="orgc805449">恒温恒应变工况</h4>
-<div class="outline-text-4" id="text-orgc805449">
+</div>
+<div id="outline-container-org10e04e9" class="outline-4">
+<h4 id="org10e04e9"><span class="section-number-4">2.3.</span> 恒温恒应变工况</h4>
+<div class="outline-text-4" id="text-2-2-3">
 <p>
 针对温度循环的分析显示本质上这是一种恒应变老化工况，同时，根据简单的模型我们现在也可以描述蠕变现象随时间、应力的变化，只是没有考虑温度的影响。
 </p>
@@ -1158,7 +1162,7 @@ L_{min}= L(\alpha _{s} - \alpha _{c} ) (T_{min}-T_{0})
 </p>
 
 
-<div id="orgf909b4b" class="figure">
+<div id="orge305b3a" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig8.svg" alt="fig8.svg" class="org-svg" width="500px" />
 </p>
 <p><span class="figure-number">Figure 8: </span>恒温条件下周期性恒定应变工况</p>
@@ -1244,7 +1248,7 @@ L_{min}= L(\alpha _{s} - \alpha _{c} ) (T_{min}-T_{0})
 </p>
 
 
-<div id="org04800f8" class="figure">
+<div id="org6d22ca9" class="figure">
 <p><img src="./static/tikz/powerdevicereliability/fig9.svg" alt="fig9.svg" class="org-svg" width="500px" />
 </p>
 <p><span class="figure-number">Figure 9: </span>蠕变振幅与循环时间的关系</p>

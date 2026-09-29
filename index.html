@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-15 Wed 22:21 -->
+<!-- 2026-09-08 Tue 23:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>tuiwo's Blog</title>
@@ -195,28 +195,36 @@
 <link rel='stylesheet' href='style.css'/>
                  <script src='sidenotes.js' defer></script>
                  <script src='comments.js'></script>
-<body class='homepage'>
+<style>.home-articles:has([value="File"]:checked) > .org-ul > li:has([data-tags~="#File"]){display:grid;}
+.home-articles:has([value="Building"]:checked) > .org-ul > li:has([data-tags~="#Building"]){display:grid;}
+.home-articles:has([value="Reading"]:checked) > .org-ul > li:has([data-tags~="#Reading"]){display:grid;}
+.home-articles:has([value="Learning"]:checked) > .org-ul > li:has([data-tags~="#Learning"]){display:grid;}</style>
 </head>
 <body>
-<div id="content" class="content">
-<h1 class="title">tuiwo's Blog</h1>
-<body class='homepage'>
-<style>
-.nav-link { margin: 1.5rem 0; font-size: 0.9em; color: #777; display:flex; gap:0.75rem; }
-.nav-link a { color: #4273b8; text-decoration: none; }
-.nav-link a:hover { text-decoration: none; text-shadow: 0 0 1px #000; }
-</style> <nav class='homepage-link' aria-label='Primary'>
-    <a href='./index.html' class='nav-link'><span class='icon' aria-hidden='true'>🏡</span>Home</a>
-    <a href='./notes/index.html' class='nav-link'><span class='icon' aria-hidden='true'>🥀</span>Garden</a>
-  </nav><h1 class='title-show'><span class='author-name'>tuiwo</span>'s Blog</h1>
-<div id='content' class='content'>
+<div id="content" class="content homepage-layout">
+<aside class='home-profile' aria-label='关于我'><div class='home-profile-inner'>
+<h1 class='home-name'><span class='author-name'>tuiwo</span>'s blog</h1>
+<div class='home-bio'><p>Hello! 我是tuiwo，我正寻找些有趣的事情，并记录在这里。</p></div>
+<figure class='home-note'>
 <blockquote>
 <p>
-I have a divine or spiritual sign which Meletus has ridiculed in his deposition. It is a voice, and whenever it speaks it turns me away from something I am about to do, but it never encourages me to do anything.
+“I have a divine or spiritual sign which Meletus has ridiculed in his deposition. It is a voice, and whenever it speaks it turns me away from something I am about to do, but it never encourages me to do anything.”
 </p>
 </blockquote>
 
-<section class="filter">
+</figure></div></aside>
+<section class='home-articles' aria-label='文章'>
+<section class="update-heatmap" id="update-heatmap">
+  <div class="update-heatmap-header">
+    <div class="update-heatmap-controls">
+      <button type="button" class="heatmap-year-btn" data-direction="prev" aria-label="上一年">&#x25C0;</button>
+      <span class="heatmap-year-label"></span>
+      <button type="button" class="heatmap-year-btn" data-direction="next" aria-label="下一年">&#x25B6;</button>
+    </div>
+  </div>
+  <div class="update-heatmap-body" tabindex="0" role="region" aria-label="全年更新记录，可横向滚动"></div>
+</section>
+<section class="filter" role="group" aria-label="按分类筛选文章">
 <label class="category">
 <input type="radio" name="tag" value="all" checked/>
 <span>All</span>
@@ -226,23 +234,23 @@ I have a divine or spiritual sign which Meletus has ridiculed in his deposition.
 <span>File</span>
 </label>
 <label class="category">
-<input type="radio" name="tag" value="Learning"/>
-<span>Learning</span>
-</label>
-<label class="category">
 <input type="radio" name="tag" value="Building"/>
 <span>Building</span>
 </label>
 <label class="category">
 <input type="radio" name="tag" value="Reading"/>
 <span>Reading</span>
+</label>
+<label class="category">
+<input type="radio" name="tag" value="Learning"/>
+<span>Learning</span>
 </label></section>
 <ul class="org-ul">
-<li><span class="timestamp">[2025-11-30]</span>   <a href="post1.html">梯度</a> <span class="tags" data-tags="#Learning"></span></li>
-<li><span class="timestamp">[2026-07-13]</span>   <a href="reading.html">无限的阅读</a> <span class="tags" data-tags="#Reading"></span></li>
-<li><span class="timestamp">[2026-02-13]</span>   <a href="power_device_reliability.html">功率器件封装可靠性</a> <span class="tags" data-tags="#Building"></span></li>
-<li><span class="timestamp">[2026-01-11]</span>   <a href="test_footnote.html">Template</a> <span class="tags" data-tags="#File"></span></li>
-<li><span class="timestamp">[2025-12-12]</span>   <a href="stream2.html">stream</a> <span class="tags" data-tags="#File"></span></li>
+<li><time class="timestamp" datetime="2025-11-30">30 Nov 2025</time>   <a href="post1.html">梯度</a> <span class="tags" data-tags="#Learning"></span></li>
+<li><time class="timestamp" datetime="2026-07-13">13 Jul 2026</time>   <a href="reading.html">无限的阅读</a> <span class="tags" data-tags="#Reading"></span></li>
+<li><time class="timestamp" datetime="2026-02-13">13 Feb 2026</time>   <a href="power_device_reliability.html">功率器件封装可靠性</a> <span class="tags" data-tags="#Building"></span></li>
+<li><time class="timestamp" datetime="2026-01-11">11 Jan 2026</time>   <a href="test_footnote.html">Template</a> <span class="tags" data-tags="#File"></span></li>
+<li><time class="timestamp" datetime="2025-12-12">12 Dec 2025</time>   <a href="stream2.html">stream</a> <span class="tags" data-tags="#File"></span></li>
 </ul>
 
 <ul class="stream-update-dates" style="display:none;">
@@ -251,20 +259,10 @@ I have a divine or spiritual sign which Meletus has ridiculed in his deposition.
 <li><span class="timestamp">[2026-02-13]</span></li>
 <li><span class="timestamp">[2026-07-13]</span></li>
 </ul>
-<section class="update-heatmap" id="update-heatmap">
-  <div class="update-heatmap-header">
-    <div class="update-heatmap-controls">
-      <button type="button" class="heatmap-year-btn" data-direction="prev" aria-label="上一年">&#x25C0;</button>
-      <span class="heatmap-year-label"></span>
-      <button type="button" class="heatmap-year-btn" data-direction="next" aria-label="下一年">&#x25B6;</button>
-    </div>
-  </div>
-  <div class="update-heatmap-body"></div>
-</section>
 <script>
 (function() {
   function buildHeatmap() {
-    if (!document.body || !document.body.classList.contains('homepage')) { return; }
+    if (!document.querySelector('.homepage-layout')) { return; }
 
     var MIN_YEAR = 2025;
     var now = new Date();
@@ -279,14 +277,14 @@ I have a divine or spiritual sign which Meletus has ridiculed in his deposition.
     var prevBtn = container.querySelector('.heatmap-year-btn[data-direction="prev"]');
     var nextBtn = container.querySelector('.heatmap-year-btn[data-direction="next"]');
 
-    var timestamps = document.querySelectorAll('body.homepage .content li .timestamp');
+    var timestamps = document.querySelectorAll('.home-articles li .timestamp');
     var activity = {};
 
     function pad(n) { return (n < 10 ? '0' + n : '' + n); }
 
     for (var i = 0; i < timestamps.length; i++) {
-      var text = timestamps[i].textContent || '';
-      var m = text.match(/\[(\d{4})-(\d{2})-(\d{2})\]/);
+      var text = timestamps[i].getAttribute('datetime') || timestamps[i].textContent || '';
+      var m = text.match(/(\d{4})-(\d{2})-(\d{2})/);
       if (!m) { continue; }
       var year = parseInt(m[1], 10);
       if (year < MIN_YEAR) { continue; }
@@ -334,7 +332,7 @@ I have a divine or spiritual sign which Meletus has ridiculed in his deposition.
       var leap  = (new Date(year, 1, 29).getMonth() === 1);
       var daysInYear = leap ? 366 : 365;
       var weeks = Math.ceil((daysInYear + jan1.getDay()) / 7);
-      var cell  = 13;  /* 方块稍微变大 */
+      var cell  = 18;  /* 放大圆点，保留每周一列的年度布局 */
       var gap   = 3;
       var width  = weeks * (cell + gap);
       var height = 7 * (cell + gap);
@@ -372,8 +370,8 @@ I have a divine or spiritual sign which Meletus has ridiculed in his deposition.
         rect.setAttribute('y', dayOfWeek * (cell + gap));
         rect.setAttribute('width',  cell);
         rect.setAttribute('height', cell);
-        rect.setAttribute('rx', 2);
-        rect.setAttribute('ry', 2);
+        rect.setAttribute('rx', cell / 2);
+        rect.setAttribute('ry', cell / 2);
         rect.setAttribute('class', 'heatmap-day level-' + level);
         rect.setAttribute('data-date',  key);
         rect.setAttribute('data-count', count);
@@ -431,6 +429,7 @@ I have a divine or spiritual sign which Meletus has ridiculed in his deposition.
   }
 })();
 </script>
+</section>
 </div>
 </body>
 </html>

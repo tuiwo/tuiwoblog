@@ -1,5 +1,18 @@
 // sidenotes.js
 (() => {
+  // 为 stream 目录加原生折叠控件；脚本不可用时，原目录仍保持可见。
+  document.querySelectorAll('.stream-page > .stream-toc').forEach(nav => {
+    const toc = nav.querySelector('#table-of-contents');
+    if (!toc) return;
+
+    const disclosure = document.createElement('details');
+    disclosure.className = 'stream-toc-disclosure';
+    const summary = document.createElement('summary');
+    summary.textContent = '目录';
+    disclosure.append(summary, toc);
+    nav.appendChild(disclosure);
+  });
+
   const content = document.querySelector('#content') || document.body;
   const refs = Array.from(document.querySelectorAll('a.footref[href^="#fn."]'));
   const items = [];
