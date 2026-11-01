@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-08 Tue 23:13 -->
+<!-- 2026-11-01 Sun 18:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>tuiwo's Blog</title>
@@ -195,24 +195,29 @@
 <link rel='stylesheet' href='style.css'/>
                  <script src='sidenotes.js' defer></script>
                  <script src='comments.js'></script>
-<style>.home-articles:has([value="File"]:checked) > .org-ul > li:has([data-tags~="#File"]){display:grid;}
-.home-articles:has([value="Building"]:checked) > .org-ul > li:has([data-tags~="#Building"]){display:grid;}
+<style>.home-articles:has([value="Building"]:checked) > .org-ul > li:has([data-tags~="#Building"]){display:grid;}
+.home-articles:has([value="File"]:checked) > .org-ul > li:has([data-tags~="#File"]){display:grid;}
 .home-articles:has([value="Reading"]:checked) > .org-ul > li:has([data-tags~="#Reading"]){display:grid;}
+.home-articles:has([value="DirtyHands"]:checked) > .org-ul > li:has([data-tags~="#DirtyHands"]){display:grid;}
 .home-articles:has([value="Learning"]:checked) > .org-ul > li:has([data-tags~="#Learning"]){display:grid;}</style>
 </head>
 <body>
 <div id="content" class="content homepage-layout">
 <aside class='home-profile' aria-label='关于我'><div class='home-profile-inner'>
 <h1 class='home-name'><span class='author-name'>tuiwo</span>'s blog</h1>
-<div class='home-bio'><p>Hello! 我是tuiwo，我正寻找些有趣的事情，并记录在这里。</p></div>
-<figure class='home-note'>
+<div class='home-bio'><p>关于学习、阅读与实践的记录。</p>
+<nav class='home-links' aria-label='个人链接'>
+<a href='./notes/index.html'>Garden ↗</a>
+<a href='mailto:fhywork@foxmail.com'>Email ↗</a>
+</nav></div>
+<details class='home-note'><summary>A note to self</summary>
 <blockquote>
 <p>
-“I have a divine or spiritual sign which Meletus has ridiculed in his deposition. It is a voice, and whenever it speaks it turns me away from something I am about to do, but it never encourages me to do anything.”
+I have a divine or spiritual sign which Meletus has ridiculed in his deposition. It is a voice, and whenever it speaks it turns me away from something I am about to do, but it never encourages me to do anything.
 </p>
 </blockquote>
 
-</figure></div></aside>
+</details></div></aside>
 <section class='home-articles' aria-label='文章'>
 <section class="update-heatmap" id="update-heatmap">
   <div class="update-heatmap-header">
@@ -230,25 +235,30 @@
 <span>All</span>
 </label>
 <label class="category">
-<input type="radio" name="tag" value="File"/>
-<span>File</span>
-</label>
-<label class="category">
 <input type="radio" name="tag" value="Building"/>
 <span>Building</span>
+</label>
+<label class="category">
+<input type="radio" name="tag" value="File"/>
+<span>File</span>
 </label>
 <label class="category">
 <input type="radio" name="tag" value="Reading"/>
 <span>Reading</span>
 </label>
 <label class="category">
+<input type="radio" name="tag" value="DirtyHands"/>
+<span>DirtyHands</span>
+</label>
+<label class="category">
 <input type="radio" name="tag" value="Learning"/>
 <span>Learning</span>
 </label></section>
 <ul class="org-ul">
-<li><time class="timestamp" datetime="2026-07-13">13 Jul 2026</time>   <a href="reading.html">无限的阅读</a> <span class="tags" data-tags="#Reading"></span></li>
-<li><time class="timestamp" datetime="2026-02-13">13 Feb 2026</time>   <a href="power_device_reliability.html">功率器件封装可靠性</a> <span class="tags" data-tags="#Building"></span></li>
+<li><time class="timestamp" datetime="2026-11-01">01 Nov 2026</time>   <a href="PE-1.html">IGBT的正向恢复</a> <span class="tags" data-tags="#Learning #DirtyHands"></span></li>
+<li><time class="timestamp" datetime="2026-10-07">07 Oct 2026</time>   <a href="reading.html">无限的阅读</a> <span class="tags" data-tags="#Reading"></span></li>
 <li><time class="timestamp" datetime="2026-01-11">11 Jan 2026</time>   <a href="test_footnote.html">Template</a> <span class="tags" data-tags="#File"></span></li>
+<li><time class="timestamp" datetime="2026-02-13">13 Feb 2026</time>   <a href="power_device_reliability.html">功率器件封装可靠性</a> <span class="tags" data-tags="#Building"></span></li>
 <li><time class="timestamp" datetime="2025-12-12">12 Dec 2025</time>   <a href="stream2.html">stream</a> <span class="tags" data-tags="#File"></span></li>
 <li><time class="timestamp" datetime="2025-11-30">30 Nov 2025</time>   <a href="post1.html">梯度</a> <span class="tags" data-tags="#Learning"></span></li>
 </ul>
@@ -258,20 +268,10 @@
 <li><span class="timestamp">[2026-02-02]</span></li>
 <li><span class="timestamp">[2026-02-13]</span></li>
 <li><span class="timestamp">[2026-07-13]</span></li>
+<li><span class="timestamp">[2026-10-07]</span></li>
 </ul>
 <script>
 (function() {
-  function sortArticles() {
-    var list = document.querySelector('.home-articles > .org-ul');
-    if (!list) { return; }
-    Array.from(list.children).sort(function(a, b) {
-      var aTime = a.querySelector('time.timestamp[datetime]');
-      var bTime = b.querySelector('time.timestamp[datetime]');
-      return (bTime ? bTime.getAttribute('datetime') : '').localeCompare(
-        aTime ? aTime.getAttribute('datetime') : '');
-    }).forEach(function(item) { list.appendChild(item); });
-  }
-
   function buildHeatmap() {
     if (!document.querySelector('.homepage-layout')) { return; }
 
@@ -434,12 +434,8 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      sortArticles();
-      buildHeatmap();
-    });
+    document.addEventListener('DOMContentLoaded', buildHeatmap);
   } else {
-    sortArticles();
     buildHeatmap();
   }
 })();
